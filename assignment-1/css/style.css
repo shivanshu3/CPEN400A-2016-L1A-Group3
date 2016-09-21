@@ -3,33 +3,69 @@ body {
 }
 
 #header {
-
+	margin-bottom: 10px;
 }
 
 #logo {
-
+	margin: 10px;
+	width: 130px;
+	padding: 50px;
+	background: #2578ea;
+	text-align: center;
+	float: left;
 }
 
 #welcomeBanner {
-
+	margin: 10px;
+	width: 630px;
+	padding: 50px;
+	background: #2578ea;
+	text-align: center;
+	float: left;	
 }
 
 #mainContent {
 
 }
 
-#navigationMenu{
+#navigationMenu {
+	width: 250px;
+	float: left;
+}
 
+#navigationMenu a{
+	margin: 10px;
+	width: 210px;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	background: #2578ea;
+}
+
+#navigationMenu a:hover{
+	color: #ffffff;
+	background-color: #01f2f9;
 }
 
 #productList{
-
+	width: 750px;
+	float: left;
 }
 
 .product {
-	
+	width: 220px;
+	margin: 10px;
+	text-align: center;
+	display: inline-block;
+}
+
+.product img {
+	width: 100%;
+	height: auto;
 }
 
 #footer {
-
+	padding: 20px;
+	background: #ffffff;
+	text-align: center;
 }
