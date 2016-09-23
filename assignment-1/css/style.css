@@ -1,5 +1,6 @@
 body {
 	width: 1000px;
+	margin: 0 auto;
 }
 
 #header {
@@ -50,15 +51,15 @@ body {
 }
 
 #productList{
-	padding-left: 10px;
+	/*padding-left: 10px;
 	padding-top: 10px;
-	box-sizing: border-box;
+	box-sizing: border-box;*/
 	width: 750px;
 	float: left;
 }
 
 .product {
-	width: 220px;01f2f9
+	width: 220px;
 	margin: 10px;
 	text-align: center;
 	display: inline-block;
@@ -67,6 +68,20 @@ body {
 .product img {
 	width: 100%;
 	height: auto;
+}
+
+.product:hover{
+	background-color: #D3D3D3;
+	border:10px solid #D3D3D3;
+}
+
+.product .price{
+	margin-top: -40px;
+	visibility: hidden;
+}
+
+.product:hover .price{
+	visibility: visible;
 }
 
 #footer {
