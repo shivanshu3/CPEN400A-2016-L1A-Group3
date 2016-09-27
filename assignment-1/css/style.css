@@ -45,7 +45,7 @@ body {
 	float: left;
 }
 
-#navigationMenu a{
+#navigationMenu a {
 	margin: 10px;
 	width: 210px;
 	padding: 10px;
@@ -56,12 +56,12 @@ body {
 	border-radius: 15px;
 }
 
-#navigationMenu a:hover{
+#navigationMenu a:hover {
 	color: #ffffff;
 	background-color: #014598;
 }
 
-#productList{
+#productList {
 	/*padding-left: 10px;
 	padding-top: 10px;
 	box-sizing: border-box;*/
@@ -84,13 +84,13 @@ body {
 	height: auto;
 }
 
-.product:hover{
+.product:hover {
 	background-color: #D3D3D3;
 	border:10px solid #D3D3D3;
 	margin: 0px;
 }
 
-.product .price{
+.product .price {
 	position: absolute;
 	bottom: 40px;
 	width: 100%;
@@ -110,7 +110,7 @@ body {
 	background-color: #D3D3D3;
 }
 
-.product:hover .price{
+.product:hover .price {
 	visibility: visible;
 	background-color: #D3D3D3;
 }
