@@ -1,6 +1,7 @@
 body {
 	width: 1000px;
 	margin: 0 auto;
+	font-family: sans-serif;
 }
 
 #header {
@@ -50,12 +51,13 @@ body {
 	padding: 10px;
 	display: block;
 	text-align: center;
-	background: #2578ea;
+	background: #002859;
+	color: white;
 }
 
 #navigationMenu a:hover{
 	color: #ffffff;
-	background-color: #01f2f9;
+	background-color: #014598;
 }
 
 #productList{
