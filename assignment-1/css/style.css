@@ -10,11 +10,15 @@ body {
 
 #logo {
 	margin: 10px;
-	width: 130px;
-	padding: 50px;
-	background: #2578ea;
+	width: 230px;
+	height: 118.5px;
 	text-align: center;
 	float: left;
+}
+
+#logo img {
+	width: 100%;
+	height: 100%;
 }
 
 #welcomeBanner {
