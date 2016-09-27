@@ -60,9 +60,12 @@ body {
 
 .product {
 	width: 220px;
+	height: 250px;
 	margin: 10px;
 	text-align: center;
 	display: inline-block;
+	overflow: hidden;
+	position: relative;
 }
 
 .product img {
@@ -79,6 +82,16 @@ body {
 .product .price{
 	margin-top: -40px;
 	visibility: hidden;
+}
+
+.product h5 {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	margin: 0px;
+	box-sizing: border-box;
+	padding: 10px;
+	background-color: #D3D3D3;
 }
 
 .product:hover .price{
