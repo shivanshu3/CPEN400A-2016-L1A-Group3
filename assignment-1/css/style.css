@@ -73,6 +73,7 @@ body {
 .product:hover{
 	background-color: #D3D3D3;
 	border:10px solid #D3D3D3;
+	margin: 0px;
 }
 
 .product .price{
