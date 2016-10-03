@@ -135,18 +135,19 @@ body {
 	text-align: center;
 	font-size: 13px;
 	opacity: 0.9;
+	border-radius: 10px;
 	border: none;
 	visibility: hidden;
 }
 
 .product button.add {
 	left: 10%;
-	background: red;
+	background: green;
 }
 
 .product button.remove {
 	right: 10%;
-	background: green;
+	background: red;
 }
 
 .product:hover button {
