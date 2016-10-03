@@ -37,16 +37,15 @@ function addToCart(productName) {
 function removeFromCart(productName) {
 	var inCartQuantity = cart[productName];
 
-	if(inCartQuantity === undefined) {
+	if(inCartQuantity === undefined)
 		alert(productName + " is not in your cart.");
-	} else {
+	else {
 		if(inCartQuantity === 1)
 			delete cart[productName];
 		else
 			cart[productName] = inCartQuantity - 1;
 
 		products[productName] += 1;
-
 		alert(productName + " was removed from your cart.");
 	}
 }
