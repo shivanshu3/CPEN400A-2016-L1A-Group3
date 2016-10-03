@@ -62,9 +62,6 @@ body {
 }
 
 #productList {
-	/*padding-left: 10px;
-	padding-top: 10px;
-	box-sizing: border-box;*/
 	width: 750px;
 	float: left;
 }
@@ -112,6 +109,48 @@ body {
 .product:hover .price {
 	visibility: visible;
 	background-color: #607d8b;
+}
+
+.product .cart {
+	position: absolute;
+	top: 0px;
+	visibility: hidden;
+}
+
+#cartimg {
+	height: 170px;
+}
+
+.product:hover .cart {
+	visibility: visible;
+	background-color: #0f0f0f;
+	opacity: 0.8;
+}
+
+.product button {
+	position: absolute;
+	bottom: 110px;
+	padding: 10px;
+	width: 75px;
+	text-align: center;
+	font-size: 13px;
+	opacity: 0.9;
+	border: none;
+	visibility: hidden;
+}
+
+.product button.add {
+	left: 10%;
+	background: red;
+}
+
+.product button.remove {
+	right: 10%;
+	background: green;
+}
+
+.product:hover button {
+	visibility: visible;
 }
 
 #footer {
