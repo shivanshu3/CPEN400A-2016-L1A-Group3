@@ -1,17 +1,17 @@
 var cart = {};
 var products = {
-	"Box1" : 10,
-	"Box2" : 10,
-	"Clothes1" : 10,
-	"Clothes2" : 10,
-	"Jeans" : 10,
-	"Keyboard" : 10,
-	"KeyboardCombo" : 10,
-	"Mice" : 10,
-	"PC1" : 10,
-	"PC2" : 10,
-	"PC3" : 10,
-	"Tent" : 10, 
+	"Box1" : 5,
+	"Box2" : 5,
+	"Clothes1" : 5,
+	"Clothes2" : 5,
+	"Jeans" : 5,
+	"Keyboard" : 5,
+	"KeyboardCombo" : 5,
+	"Mice" : 5,
+	"PC1" : 5,
+	"PC2" : 5,
+	"PC3" : 5,
+	"Tent" : 5, 
 };
 
 function addToCart(productName) {
@@ -48,4 +48,16 @@ function removeFromCart(productName) {
 		products[productName] += 1;
 		alert(productName + " was removed from your cart.");
 	}
+}
+
+function showCart() {
+	var output = '';
+	for(var item in cart) {
+		output += item + ': ' + cart[item] + '\n';
+	}
+
+	if(!output)
+		alert("Your cart is empty.");
+	else
+		alert("Your cart includes:" + '\n' + output);
 }

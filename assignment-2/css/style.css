@@ -36,6 +36,23 @@ body {
 	height: 100%;
 }
 
+#showcart button{
+	margin-top: 30px;
+	margin-left: 20px;
+	width: 210px;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	background: #42f48f;
+	color: black;
+	border-radius: 10px;
+	font-size: 15px;
+	border-color: black;
+	/*position: fixed;
+    top: 1em;
+    right: 1em;*/
+}
+
 #mainContent {
 	overflow: auto;
 }
