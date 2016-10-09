@@ -13,8 +13,26 @@ var products = {
 	"PC3" : 5,
 	"Tent" : 5, 
 };
+var inactiveTime = 0;
+var cartDisplayRunning = false;
+setInterval(inactiveTimeTracking, 1000);
+
+function inactiveTimeTracking() {
+	if(cartDisplayRunning)
+		return;
+
+	inactiveTime += 1;
+
+	if(inactiveTime > 30) {
+		alert("Hey there! Are you still planning to buy something?");
+		inactiveTime = 0;
+	}
+
+}
 
 function addToCart(productName) {
+	inactiveTime = 0;
+
 	var itemQuantity = products[productName];
 
 	if(itemQuantity === 0) {
@@ -35,6 +53,8 @@ function addToCart(productName) {
 }
 
 function removeFromCart(productName) {
+	inactiveTime = 0;
+
 	var inCartQuantity = cart[productName];
 
 	if(inCartQuantity === undefined)
@@ -51,6 +71,7 @@ function removeFromCart(productName) {
 }
 
 function showCart() {
+	cartDisplayRunning = true;
 	var productsToDisplay = [];
 	for(var item in cart) {
 		productsToDisplay.push(item + ': ' + cart[item]);
@@ -71,4 +92,6 @@ function showItemsWithInterval(index, productsToDisplay) {
 	}
 
 	alert("Your entire shopping cart has been displayed.");
+	cartDisplayRunning = false;
+	inactiveTime = 0;
 }
