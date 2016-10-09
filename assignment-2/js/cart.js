@@ -51,13 +51,24 @@ function removeFromCart(productName) {
 }
 
 function showCart() {
-	var output = '';
+	var productsToDisplay = [];
 	for(var item in cart) {
-		output += item + ': ' + cart[item] + '\n';
+		productsToDisplay.push(item + ': ' + cart[item]);
 	}
 
-	if(!output)
-		alert("Your cart is empty.");
-	else
-		alert("Your cart includes:" + '\n' + output);
+	showItemsWithInterval(0, productsToDisplay);
+}
+
+function showItemsWithInterval(index, productsToDisplay) {
+	if(productsToDisplay.length > index) {
+		alert(productsToDisplay[index]);
+		index += 1;
+
+		if(productsToDisplay.length > index) {
+			setTimeout(showItemsWithInterval, 5000, index, productsToDisplay);
+			return;
+		}
+	}
+
+	alert("Your entire shopping cart has been displayed.");
 }
