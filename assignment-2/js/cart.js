@@ -1,11 +1,7 @@
 /**
  * Sets up and initializes the global variables used in this app.
- * Also enhances the DOM and initializes the inactive timer.
  */
-function initializePage() {
-	console.log('Initializing page...');
-
-	// Global variables:
+function initGlobalVars() {
 	window.cart = {};
 	window.products = {
 		"Box1" : 5,
@@ -23,6 +19,13 @@ function initializePage() {
 	};
 	window.inactiveTime = 0;
 	window.cartDisplayRunning = false;
+}
+
+/**
+ * Enhances the DOM and initializes the inactive timer.
+ */
+function initPage() {
+	console.log('Initializing page...');
 
 	// Initialization functions:
 	setInterval(inactiveTimeTracking, 1000);
@@ -120,7 +123,7 @@ function inactiveTimeTracking() {
 	inactiveTime += 1;
 
 	if(inactiveTime > 30) {
-		// alert("Hey there! Are you still planning to buy something?");
+		alert("Hey there! Are you still planning to buy something?");
 		inactiveTime = 0;
 	}
 
