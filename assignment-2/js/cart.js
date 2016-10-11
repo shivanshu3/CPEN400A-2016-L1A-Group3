@@ -59,27 +59,34 @@ function initProducts() {
 		cartImage.attr('id', 'cartimg');
 		cartImage.attr('src', 'images/cart.png');
 		cartDiv.append(cartImage);
-		console.log(cartDiv);
 
 		var priceDiv = $('<div>');
 		priceDiv.addClass('price')
 		priceDiv.text(productPrice);
 
-		var addButton = $('<button>');
-		addButton.addClass('add');
-		addButton.text('Add');
-		addButton.click(function() {
-			console.log('Add!');
-			addToCart(productName);
-		});
+		// Anonymous function is used here to store productName in its closure:
+		var addButton;
+		(function() {
+			var _productName = productName;
+			addButton = $('<button>');
+			addButton.addClass('add');
+			addButton.text('Add');
+			addButton.click(function() {
+				addToCart(_productName);
+			});
+		})();
 
-		var removeButton = $('<button>');
-		removeButton.addClass('remove');
-		removeButton.text('Remove');
-		removeButton.click(function() {
-			console.log('Remove!');
-			removeFromCart(productName);
-		});
+		// Anonymous function is used here to store productName in its closure:
+		var removeButton;
+		(function() {
+			var _productName = productName;
+			removeButton = $('<button>');
+			removeButton.addClass('remove');
+			removeButton.text('Remove');
+			removeButton.click(function() {
+				removeFromCart(_productName);
+			});
+		})();
 
 		var titleHeading = $('<h5>');
 		titleHeading.text(productName);
