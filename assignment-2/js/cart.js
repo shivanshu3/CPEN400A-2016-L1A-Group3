@@ -65,7 +65,7 @@ function initProducts() {
 		var cartDiv = $('<div>');
 		cartDiv.addClass('cart');
 		var cartImage = $('<img>');
-		cartImage.attr('id', 'cartimg');
+		cartImage.addClass('cartimg');
 		cartImage.attr('src', 'images/cart.png');
 		cartDiv.append(cartImage);
 

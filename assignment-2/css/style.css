@@ -134,7 +134,7 @@ body {
 	visibility: hidden;
 }
 
-#cartimg {
+.cartimg {
 	height: 170px;
 }
 
