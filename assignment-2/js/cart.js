@@ -1,21 +1,28 @@
-var cart = {};
-var products = {
-	"Box1" : 5,
-	"Box2" : 5,
-	"Clothes1" : 5,
-	"Clothes2" : 5,
-	"Jeans" : 5,
-	"Keyboard" : 5,
-	"KeyboardCombo" : 5,
-	"Mice" : 5,
-	"PC1" : 5,
-	"PC2" : 5,
-	"PC3" : 5,
-	"Tent" : 5, 
-};
-var inactiveTime = 0;
-var cartDisplayRunning = false;
-setInterval(inactiveTimeTracking, 1000);
+function initializePage() {
+	console.log('Initializing page...');
+
+	// Global variables:
+	window.cart = {};
+	window.products = {
+		"Box1" : 5,
+		"Box2" : 5,
+		"Clothes1" : 5,
+		"Clothes2" : 5,
+		"Jeans" : 5,
+		"Keyboard" : 5,
+		"KeyboardCombo" : 5,
+		"Mice" : 5,
+		"PC1" : 5,
+		"PC2" : 5,
+		"PC3" : 5,
+		"Tent" : 5,
+	};
+	window.inactiveTime = 0;
+	window.cartDisplayRunning = false;
+
+	// Initialization functions:
+	setInterval(inactiveTimeTracking, 1000);
+}
 
 function inactiveTimeTracking() {
 	if(cartDisplayRunning)
@@ -24,7 +31,7 @@ function inactiveTimeTracking() {
 	inactiveTime += 1;
 
 	if(inactiveTime > 30) {
-		alert("Hey there! Are you still planning to buy something?");
+		// alert("Hey there! Are you still planning to buy something?");
 		inactiveTime = 0;
 	}
 
