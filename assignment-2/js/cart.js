@@ -22,6 +22,38 @@ function initializePage() {
 
 	// Initialization functions:
 	setInterval(inactiveTimeTracking, 1000);
+	initProducts();
+}
+
+function initProducts() {
+	var products = $('#productList .product');
+	for (var i = 0; i < products.length; i++) {
+		// This is a div with the class 'product':
+		var product = $(products[i]);
+
+		// This is the path of the image, ex:
+		// "images/Box1_$10.png"
+		var imagePath = product.find('img').attr('src');
+
+		// This is the full filename, ex:
+		// "Box1_$10.png"
+		var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
+
+		// This is the filename without the extension, ex:
+		// "Box1_$10"
+		imageFileName = imageFileName.split('.')[0];
+
+		// This is the product name, ex:
+		// "Box1"
+		var productName = imageFileName.split('_')[0];
+
+		// This is the price of the product with the dollar sign, ex:
+		// "$10"
+		var productPrice = imageFileName.split('_')[1];
+
+		console.log(productName);
+		console.log(productPrice);
+	}
 }
 
 function inactiveTimeTracking() {
