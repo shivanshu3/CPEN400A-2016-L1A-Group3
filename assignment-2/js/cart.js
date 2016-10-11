@@ -29,11 +29,11 @@ function initProducts() {
 	var products = $('#productList .product');
 	for (var i = 0; i < products.length; i++) {
 		// This is a div with the class 'product':
-		var product = $(products[i]);
+		var productDiv = $(products[i]);
 
 		// This is the path of the image, ex:
 		// "images/Box1_$10.png"
-		var imagePath = product.find('img').attr('src');
+		var imagePath = productDiv.find('img').attr('src');
 
 		// This is the full filename, ex:
 		// "Box1_$10.png"
@@ -51,8 +51,45 @@ function initProducts() {
 		// "$10"
 		var productPrice = imageFileName.split('_')[1];
 
-		console.log(productName);
-		console.log(productPrice);
+		// Preparing divs to be inserted into the product div:
+
+		var cartDiv = $('<div>');
+		cartDiv.addClass('cart');
+		var cartImage = $('<img>');
+		cartImage.attr('id', 'cartimg');
+		cartImage.attr('src', 'images/cart.png');
+		cartDiv.append(cartImage);
+		console.log(cartDiv);
+
+		var priceDiv = $('<div>');
+		priceDiv.addClass('price')
+		priceDiv.text(productPrice);
+
+		var addButton = $('<button>');
+		addButton.addClass('add');
+		addButton.text('Add');
+		addButton.click(function() {
+			console.log('Add!');
+			addToCart(productName);
+		});
+
+		var removeButton = $('<button>');
+		removeButton.addClass('remove');
+		removeButton.text('Remove');
+		removeButton.click(function() {
+			console.log('Remove!');
+			removeFromCart(productName);
+		});
+
+		var titleHeading = $('<h5>');
+		titleHeading.text(productName);
+
+		// Insert all the divs and buttons created above to the product div:
+		productDiv.append(cartDiv);
+		productDiv.append(priceDiv);
+		productDiv.append(addButton);
+		productDiv.append(removeButton);
+		productDiv.append(titleHeading);
 	}
 }
 
