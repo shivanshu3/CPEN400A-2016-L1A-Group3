@@ -1,3 +1,7 @@
+/**
+ * Sets up and initializes the global variables used in this app.
+ * Also enhances the DOM and initializes the inactive timer.
+ */
 function initializePage() {
 	console.log('Initializing page...');
 
@@ -25,6 +29,11 @@ function initializePage() {
 	initProducts();
 }
 
+/**
+ * Initializes all the .product divs.
+ * Adds the cart image, price, title, and add and remove buttons to
+ * all product divs.
+ */
 function initProducts() {
 	var products = $('#productList .product');
 	for (var i = 0; i < products.length; i++) {
@@ -100,6 +109,10 @@ function initProducts() {
 	}
 }
 
+/**
+ * This function is called every second. It is used to keep track of how
+ * long the user was inactive for.
+ */
 function inactiveTimeTracking() {
 	if(cartDisplayRunning)
 		return;
@@ -113,6 +126,10 @@ function inactiveTimeTracking() {
 
 }
 
+/**
+ * Adds the given product to the cart.
+ * If we run out of this product, then that product is not added to the cart.
+ */
 function addToCart(productName) {
 	inactiveTime = 0;
 
@@ -135,6 +152,10 @@ function addToCart(productName) {
 	alert(productName + " was added to your cart.");
 }
 
+/**
+ * Removes the given product from the cart if the user has
+ * the item in his/her cart.
+ */
 function removeFromCart(productName) {
 	inactiveTime = 0;
 
@@ -153,6 +174,9 @@ function removeFromCart(productName) {
 	}
 }
 
+/**
+ * Shows the cart info the user by using alerts.
+ */
 function showCart() {
 	cartDisplayRunning = true;
 	var productsToDisplay = [];
@@ -163,6 +187,9 @@ function showCart() {
 	showItemsWithInterval(0, productsToDisplay);
 }
 
+/**
+ * Works in conjunction with the showCart function.
+ */
 function showItemsWithInterval(index, productsToDisplay) {
 	if(productsToDisplay.length > index) {
 		alert(productsToDisplay[index]);
