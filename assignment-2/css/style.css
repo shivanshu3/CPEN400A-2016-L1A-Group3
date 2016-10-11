@@ -93,7 +93,7 @@ body {
 	position: relative;
 }
 
-.product img {
+.product > img {
 	width: 100%;
 	height: auto;
 }
@@ -136,6 +136,7 @@ body {
 
 .cartimg {
 	height: 170px;
+	width: 100%;
 }
 
 .product:hover .cart {
