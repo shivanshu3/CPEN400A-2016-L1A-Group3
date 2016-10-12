@@ -3,22 +3,51 @@
  */
 function initGlobalVars() {
 	window.cart = {};
-	window.products = {
-		"Box1" : 5,
-		"Box2" : 5,
-		"Clothes1" : 5,
-		"Clothes2" : 5,
-		"Jeans" : 5,
-		"Keyboard" : 5,
-		"KeyboardCombo" : 5,
-		"Mice" : 5,
-		"PC1" : 5,
-		"PC2" : 5,
-		"PC3" : 5,
-		"Tent" : 5,
-	};
+	// These are the paths of product images
+	var products_prices = [
+		"images/Box1_$10.png",
+		"images/Box2_$5.png",
+		"images/Clothes1_$20.png",
+		"images/Clothes2_$30.png",
+		"images/Jeans_$50.png",
+		"images/Keyboard_$20.png",
+		"images/KeyboardCombo_$40.png",
+		"images/Mice_$20.png",
+		"images/PC1_$350.png",
+		"images/PC2_$400.png",
+		"images/PC3_$300.png",
+		"images/Tent_$100.png"
+	];
+	window.products = initProductsVar(products_prices);
 	window.inactiveTime = 0;
 	window.cartDisplayRunning = false;
+}
+
+function initProductsVar(products_prices) {
+	var products = {};
+
+	for (var i = 0; i < products_prices.length; i++) {
+		// This is the path of the image, ex:
+		// "images/Box1_$10.png"
+		var imagePath = products_prices[i];
+
+		// This is the full filename, ex:
+		// "Box1_$10.png"
+		var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
+
+		// This is the filename without the extension, ex:
+		// "Box1_$10"
+		imageFileName = imageFileName.split('.')[0];
+
+		// This is the product name, ex:
+		// "Box1"
+		var productName = imageFileName.split('_')[0];
+
+		// All quatities are initialized to 5:
+		products[productName] = 5;
+	}
+
+	return products;
 }
 
 /**
