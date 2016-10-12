@@ -4,7 +4,7 @@
 function initGlobalVars() {
 	window.cart = {};
 	// These are the paths of product images
-	var products_prices = [
+	window.productsPrices = [
 		"images/Box1_$10.png",
 		"images/Box2_$5.png",
 		"images/Clothes1_$20.png",
@@ -18,18 +18,18 @@ function initGlobalVars() {
 		"images/PC3_$300.png",
 		"images/Tent_$100.png"
 	];
-	window.products = initProductsVar(products_prices);
+	window.products = initProductsVar(productsPrices);
 	window.inactiveTime = 0;
 	window.cartDisplayRunning = false;
 }
 
-function initProductsVar(products_prices) {
+function initProductsVar(productsPrices) {
 	var products = {};
 
-	for (var i = 0; i < products_prices.length; i++) {
+	for (var i = 0; i < productsPrices.length; i++) {
 		// This is the path of the image, ex:
 		// "images/Box1_$10.png"
-		var imagePath = products_prices[i];
+		var imagePath = productsPrices[i];
 
 		// This is the full filename, ex:
 		// "Box1_$10.png"
@@ -67,14 +67,16 @@ function initPage() {
  * all product divs.
  */
 function initProducts() {
-	var products = $('#productList .product');
-	for (var i = 0; i < products.length; i++) {
+	var productListDiv = $('#productList');
+
+	for (var i = 0; i < productsPrices.length; i++) {
 		// This is a div with the class 'product':
-		var productDiv = $(products[i]);
+		var productDiv = $('<div>');
+		productDiv.addClass('product');
 
 		// This is the path of the image, ex:
 		// "images/Box1_$10.png"
-		var imagePath = productDiv.find('img').attr('src');
+		var imagePath = productsPrices[i];
 
 		// This is the full filename, ex:
 		// "Box1_$10.png"
@@ -93,6 +95,9 @@ function initProducts() {
 		var productPrice = imageFileName.split('_')[1];
 
 		// Preparing divs to be inserted into the product div:
+
+		var productImage = $('<img>');
+		productImage.attr('src', imagePath);
 
 		var cartDiv = $('<div>');
 		cartDiv.addClass('cart');
@@ -133,11 +138,15 @@ function initProducts() {
 		titleHeading.text(productName);
 
 		// Insert all the divs and buttons created above to the product div:
+		productDiv.append(productImage);
 		productDiv.append(cartDiv);
 		productDiv.append(priceDiv);
 		productDiv.append(addButton);
 		productDiv.append(removeButton);
 		productDiv.append(titleHeading);
+
+		// Insert this product div into the productList div:
+		productListDiv.append(productDiv);
 	}
 }
 
