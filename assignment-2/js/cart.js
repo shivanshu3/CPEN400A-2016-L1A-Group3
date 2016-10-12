@@ -23,31 +23,65 @@ function initGlobalVars() {
 	window.cartDisplayRunning = false;
 }
 
+/**
+ * Initializes the products global hashmap which is a map of <ProductName> to
+ * <ProductPrice>
+ * It requires an array of image paths as input. Each element of the array
+ * should be an image path with the image name of the following format:
+ * <product_name>_$<product_price>.<extension>
+ * Returns a hashmap, which can be assigned to the global variable 'products'
+ */
 function initProductsVar(productsPrices) {
 	var products = {};
 
 	for (var i = 0; i < productsPrices.length; i++) {
-		// This is the path of the image, ex:
-		// "images/Box1_$10.png"
 		var imagePath = productsPrices[i];
-
-		// This is the full filename, ex:
-		// "Box1_$10.png"
-		var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
-
-		// This is the filename without the extension, ex:
-		// "Box1_$10"
-		imageFileName = imageFileName.split('.')[0];
-
-		// This is the product name, ex:
-		// "Box1"
-		var productName = imageFileName.split('_')[0];
+		var productName = productNameFromImagePath(imagePath);
 
 		// All quatities are initialized to 5:
 		products[productName] = 5;
 	}
 
 	return products;
+}
+
+/**
+ * Given an image path like "images/Box1_$10.png", it returns the product
+ * name.
+ */
+function productNameFromImagePath(imagePath) {
+	// This is the full filename, ex:
+	// "Box1_$10.png"
+	var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
+
+	// This is the filename without the extension, ex:
+	// "Box1_$10"
+	imageFileName = imageFileName.split('.')[0];
+
+	// This is the product name, ex:
+	// "Box1"
+	var productName = imageFileName.split('_')[0];
+
+	return productName;
+}
+
+/**
+ * Given an image path like "images/Box1_$10.png", it returns the product
+ * price.
+ */
+function productPriceFromImagePath(imagePath) {
+	// This is the full filename, ex:
+	// "Box1_$10.png"
+	var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
+
+	// This is the filename without the extension, ex:
+	// "Box1_$10"
+	imageFileName = imageFileName.split('.')[0];
+
+	// This is the price of the product, ex: 10
+	var productPrice = Number(imageFileName.split('_')[1].substring(1));
+
+	return productPrice;
 }
 
 /**
