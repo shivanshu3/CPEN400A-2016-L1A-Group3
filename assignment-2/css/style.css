@@ -53,6 +53,14 @@ body {
     right: 1em;*/
 }
 
+button {
+   cursor: pointer;
+}
+
+#navigationMenu a {
+   cursor: pointer;
+}
+
 #mainContent {
 	overflow: auto;
 }
