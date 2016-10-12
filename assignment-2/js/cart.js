@@ -112,21 +112,13 @@ function initProducts() {
 		// "images/Box1_$10.png"
 		var imagePath = productsPrices[i];
 
-		// This is the full filename, ex:
-		// "Box1_$10.png"
-		var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
-
-		// This is the filename without the extension, ex:
-		// "Box1_$10"
-		imageFileName = imageFileName.split('.')[0];
-
 		// This is the product name, ex:
 		// "Box1"
-		var productName = imageFileName.split('_')[0];
+		var productName = productNameFromImagePath(imagePath);
 
 		// This is the price of the product with the dollar sign, ex:
 		// "$10"
-		var productPrice = imageFileName.split('_')[1];
+		var productPrice = '$' + productPriceFromImagePath(imagePath);
 
 		// Preparing divs to be inserted into the product div:
 
