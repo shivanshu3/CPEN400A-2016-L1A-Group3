@@ -186,7 +186,7 @@ function inactiveTimeTracking() {
 
 	inactiveTime += 1;
 
-	if(inactiveTime > 30) {
+	if(inactiveTime > 300) {
 		alert("Hey there! Are you still planning to buy something?");
 		inactiveTime = 0;
 	}
@@ -211,8 +211,10 @@ function addToCart(productName) {
 
 	var inCartQuantity = cart[productName];
 
-	if(inCartQuantity === undefined)
+	if(inCartQuantity === undefined) {
 		cart[productName] = 1;
+		showRemoveButton(true, productName);
+	}
 	else
 		cart[productName] = inCartQuantity + 1;
 
@@ -231,8 +233,10 @@ function removeFromCart(productName) {
 	if(inCartQuantity === undefined)
 		alert(productName + " is not in your cart.");
 	else {
-		if(inCartQuantity === 1)
+		if(inCartQuantity === 1) {
 			delete cart[productName];
+			showRemoveButton(false, productName);
+		}
 		else
 			cart[productName] = inCartQuantity - 1;
 
@@ -272,3 +276,30 @@ function showItemsWithInterval(index, productsToDisplay) {
 	cartDisplayRunning = false;
 	inactiveTime = 0;
 }
+
+/**
+ * This function enables remove button visibility when hover over a given product, if
+ * the product is currently in the shopper's cart.
+ */
+function showRemoveButton(show, productName) {
+ 	var buttonClass = document.getElementsByClassName("remove");
+
+ 	if(!buttonClass)
+ 		return;
+
+ 	var i = 0;
+ 	var index;
+ 	for(var key in products) {
+ 		if(key === productName) {
+ 			index = i;
+ 			break;
+ 		}
+
+ 		i++;
+ 	}
+
+ 	if(show)
+ 		buttonClass[index].style.display = 'block';
+ 	else
+ 		buttonClass[index].style.display = 'none';
+ }
