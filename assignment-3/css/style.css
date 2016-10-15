@@ -53,11 +53,12 @@ body {
     right: 1em;*/
 }
 
-button {
-   cursor: pointer;
+#showcart button:hover {
+	color: white;
+	background-color: #27d070;
 }
 
-#navigationMenu a {
+button {
    cursor: pointer;
 }
 
@@ -79,6 +80,7 @@ button {
 	background: #002859;
 	color: white;
 	border-radius: 15px;
+	cursor: pointer;
 }
 
 #navigationMenu a:hover {
