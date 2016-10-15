@@ -1,0 +1,191 @@
+body {
+	width: 1000px;
+	margin: 0 auto;
+	font-family: sans-serif;
+}
+
+#header {
+	margin-bottom: 10px;
+	overflow: auto;
+}
+
+#logo {
+	margin: 10px;
+	width: 230px;
+	height: 118.5px;
+	text-align: center;
+	float: left;
+}
+
+#logo img {
+	width: 100%;
+	height: 100%;
+}
+
+#welcomeBanner {
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 730px;
+	height: 118.5px;
+	background: #002859;
+	text-align: center;
+	float: left;
+}
+
+#welcomeBanner img {
+	height: 100%;
+}
+
+#showcart button{
+	margin-top: 30px;
+	margin-left: 20px;
+	width: 210px;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	background: #42f48f;
+	color: black;
+	border-radius: 10px;
+	font-size: 15px;
+	border-color: black;
+	/*position: fixed;
+    top: 1em;
+    right: 1em;*/
+}
+
+button {
+   cursor: pointer;
+}
+
+#navigationMenu a {
+   cursor: pointer;
+}
+
+#mainContent {
+	overflow: auto;
+}
+
+#navigationMenu {
+	width: 250px;
+	float: left;
+}
+
+#navigationMenu a {
+	margin: 10px;
+	width: 210px;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	background: #002859;
+	color: white;
+	border-radius: 15px;
+}
+
+#navigationMenu a:hover {
+	color: #ffeb3b;
+	background-color: #014598;
+}
+
+#productList {
+	width: 750px;
+	float: left;
+}
+
+.product {
+	width: 220px;
+	height: 250px;
+	margin: 10px;
+	text-align: center;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+}
+
+.product > img {
+	width: 100%;
+	height: auto;
+}
+
+.product:hover {
+	border:10px solid #D3D3D3;
+	margin: 0px;
+}
+
+.product .price {
+	position: absolute;
+	bottom: 40px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	visibility: hidden;
+}
+
+.product h5 {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 40px;
+	margin: 0px;
+	box-sizing: border-box;
+	padding: 10px;
+	background-color: #D3D3D3;
+}
+
+.product:hover .price {
+	visibility: visible;
+	background-color: #607d8b;
+}
+
+.product .cart {
+	position: absolute;
+	top: 0px;
+	visibility: hidden;
+}
+
+.cartimg {
+	height: 170px;
+	width: 100%;
+}
+
+.product:hover .cart {
+	visibility: visible;
+	background-color: #0f0f0f;
+	opacity: 0.8;
+}
+
+.product button {
+	position: absolute;
+	bottom: 110px;
+	padding: 10px;
+	width: 75px;
+	text-align: center;
+	font-size: 13px;
+	opacity: 0.9;
+	border-radius: 10px;
+	border: none;
+	visibility: hidden;
+}
+
+.product button.add {
+	left: 10%;
+	background: green;
+}
+
+.product button.remove {
+	right: 10%;
+	background: red;
+}
+
+.product:hover button {
+	visibility: visible;
+}
+
+#footer {
+	width: 1000px;
+	height: 70px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 70px;
+	background-color: #002859;
+	color: white;
+}
