@@ -25,7 +25,7 @@ body {
 #welcomeBanner {
 	margin-left: 10px;
 	margin-top: 10px;
-	width: 730px;
+	width: 630px;
 	height: 118.5px;
 	background: #002859;
 	text-align: center;
@@ -34,6 +34,29 @@ body {
 
 #welcomeBanner img {
 	height: 100%;
+}
+
+#cartButton {
+	width: 70px;
+	height: 118.5px;
+	margin-left: 10px;
+	margin-top: 10px;
+	float: left;
+	background: #42f48f;	
+	/*margin-top: 30px;
+	margin-left: 20px;
+	width: 20px;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	background: #42f48f;
+	color: black;
+	border-radius: 10px;
+	font-size: 15px;
+	border-color: black;
+	position: fixed;
+    top: 1em;
+    right: 1em;*/
 }
 
 #showcart button{
