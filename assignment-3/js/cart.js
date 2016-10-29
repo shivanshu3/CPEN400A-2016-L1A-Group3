@@ -21,7 +21,7 @@ function initGlobalVars() {
 	window.products = initProductsVar(productsPrices);
 	window.inactiveTime = 0;
 	window.cartDisplayRunning = false;
-	window.CartTotal = 0;
+	window.cartTotal = 0;
 }
 
 /**
@@ -212,14 +212,14 @@ function displayInactiveTime(time) {
 function addToCart(productName) {
 	inactiveTime = 0;
 
-	var itemQuantity = products[productName];
+	var itemQuantity = products[productName].quantity;
 
 	if(itemQuantity === 0) {
 		alert(productName + " is no longer in stock.");
 		return;
 	}
 
-	products[productName] = itemQuantity - 1;
+	products[productName].quantity = itemQuantity - 1;
 
 	var inCartQuantity = cart[productName];
 
@@ -230,7 +230,8 @@ function addToCart(productName) {
 	else
 		cart[productName] = inCartQuantity + 1;
 
-	updateCartTotal(CartTotal);
+	cartTotal += products[productName].price;
+	updateCartTotal(cartTotal);
 	alert(productName + " was added to your cart.");
 }
 
@@ -253,16 +254,17 @@ function removeFromCart(productName) {
 		else
 			cart[productName] = inCartQuantity - 1;
 
-		products[productName] += 1;
+		products[productName].quantity += 1;
 
-		updateCartTotal(CartTotal);
+		cartTotal -= products[productName].price;
+		updateCartTotal(cartTotal);
 		alert(productName + " was removed from your cart.");
 	}
 }
 
-function updateCartTotal(CartTotal) {
+function updateCartTotal(cartTotal) {
 	var priceElement = document.getElementById("cartButton");
-	priceElement.innerText = "Cart($" + CartTotal + ")";
+	priceElement.innerText = "Cart($" + cartTotal + ")";
 }
 
 /**
