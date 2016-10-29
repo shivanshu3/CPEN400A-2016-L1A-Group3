@@ -185,12 +185,18 @@ function inactiveTimeTracking() {
 		return;
 
 	inactiveTime += 1;
+	displayInactiveTime(inactiveTime);
 
 	if(inactiveTime > 300) {
 		alert("Hey there! Are you still planning to buy something?");
 		inactiveTime = 0;
 	}
 
+}
+
+function displayInactiveTime(time) {
+	var footerElement = document.getElementById("footer");
+	footerElement.innerText = "Inactive time: " + time + " seconds"; 
 }
 
 /**
