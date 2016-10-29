@@ -21,6 +21,7 @@ function initGlobalVars() {
 	window.products = initProductsVar(productsPrices);
 	window.inactiveTime = 0;
 	window.cartDisplayRunning = false;
+	window.CartTotal = 0;
 }
 
 /**
@@ -37,9 +38,14 @@ function initProductsVar(productsPrices) {
 	for (var i = 0; i < productsPrices.length; i++) {
 		var imagePath = productsPrices[i];
 		var productName = productNameFromImagePath(imagePath);
-
-		// All quatities are initialized to 5:
-		products[productName] = 5;
+		var productPrice = productPriceFromImagePath(imagePath);
+		
+		// All quatities are initialized to 5, and all prices are initialized
+		// to the product's respective price amount
+		products[productName] = {
+			'price' : productPrice,
+			'quantity' : 5,
+		};
 	}
 
 	return products;
@@ -224,6 +230,7 @@ function addToCart(productName) {
 	else
 		cart[productName] = inCartQuantity + 1;
 
+	updateCartTotal(CartTotal);
 	alert(productName + " was added to your cart.");
 }
 
@@ -247,8 +254,15 @@ function removeFromCart(productName) {
 			cart[productName] = inCartQuantity - 1;
 
 		products[productName] += 1;
+
+		updateCartTotal(CartTotal);
 		alert(productName + " was removed from your cart.");
 	}
+}
+
+function updateCartTotal(CartTotal) {
+	var priceElement = document.getElementById("cartButton");
+	priceElement.innerText = "Cart($" + CartTotal + ")";
 }
 
 /**
