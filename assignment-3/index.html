@@ -19,7 +19,7 @@
          <img src="images/ubc_header.gif">
 		</div>
 		<div id="cartPriceTracking">
-			<button id="cartButton">Cart ($0)</button>
+			<button id="cartButton" onclick="showModal()">Cart ($0)</button>
 		</div>
 	</div>
 
@@ -43,5 +43,21 @@
 	<div id="footer">
       Inactive time: 0 seconds
 	</div>
+
+	<div id="cartModal" class="modal">
+		<div class="modalContent">
+			<div class="modalHeader">
+				<span class="close" onclick="modalClose()">x</span>
+				<h2>Cart Information</h2>
+			</div>
+			<div class="modalBody">
+				<p>test</p>
+				<p>test</p>
+			</div>
+			<div class="modalFooter">
+				<h3>Checkout</h3>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>
