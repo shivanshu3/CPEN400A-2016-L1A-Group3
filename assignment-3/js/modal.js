@@ -62,9 +62,10 @@ Modal.prototype.hide = function() {
 };
 
 /**
- * Sets the given jQuery div as the content of the window.
+ * Returns true if the modal window is visible, false otherwise.
  */
-Modal.prototype.setContents = function() {
+Modal.prototype.isVisible = function() {
+	return this.backgroundDiv.css('display') == 'block';
 };
 
 /** PRIVATE METHODS **/

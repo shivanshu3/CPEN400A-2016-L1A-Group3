@@ -21,6 +21,7 @@ function initGlobalVars() {
 	window.products = initProductsVar(productsPrices);
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
+	window.cartModal = null;
 }
 
 /**
@@ -100,9 +101,9 @@ function initPage() {
 	initProducts();
 
 	// Cart button click handler:
-	var cartModal = new Modal();
+	window.cartModal = new Modal();
 	$('#cartButton').click(function() {
-		cartModal.show();
+		window.cartModal.show();
 	});
 }
 
@@ -195,8 +196,8 @@ function initProducts() {
  * long the user was inactive for.
  */
 function inactiveTimeTracking() {
-	// if(cartDisplayRunning)
-	// 	return;
+	if(window.cartModal.isVisible())
+		return;
 
 	inactiveTime += 1;
 	displayInactiveTime(inactiveTime);
