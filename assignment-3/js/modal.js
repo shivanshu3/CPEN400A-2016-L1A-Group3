@@ -11,10 +11,14 @@
  */
 var Modal = function() {
 	// Instance variables:
+	this.height = 300; // TODO: Do not hard code
+	this.width = 700; // TODO: Do not hard code
 	this.backgroundDiv = this.createBackgroundDiv();
+	this.windowDiv = this.createWindowDiv();
 
 	// Add everything to the DOM:
 	$('body').append(this.backgroundDiv);
+	$('body').append(this.windowDiv);
 };
 
 /**
@@ -49,4 +53,20 @@ Modal.prototype.createBackgroundDiv = function() {
 	backgroundDiv.css('right', 0);
 
 	return backgroundDiv;
+};
+
+Modal.prototype.createWindowDiv = function() {
+	var windowDiv = $('<div>');
+	windowDiv.height(this.height);
+	windowDiv.width(this.width);
+	windowDiv.css('position', 'fixed');
+	windowDiv.css('top', '50%');
+	windowDiv.css('left', '50%');
+	windowDiv.css('transform', 'translate(-50%, -50%)');
+	windowDiv.css('background-color', 'white');
+	windowDiv.css('z-index', 1001);
+	windowDiv.css('box-shadow', '6px 7px 30px 5px rgba(0,0,0,0.7)');
+	windowDiv.css('border-radius', 10);
+
+	return windowDiv;
 };
