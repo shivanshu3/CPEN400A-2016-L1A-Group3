@@ -1,6 +1,3 @@
-var span = document.getElementsByClassName("close")[0];
-
-
 /**
  * Sets up and initializes the global variables used in this app.
  */
