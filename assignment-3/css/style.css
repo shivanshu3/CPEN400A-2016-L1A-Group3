@@ -4,6 +4,10 @@ body {
 	font-family: sans-serif;
 }
 
+th {
+	text-align: left;
+}
+
 #header {
 	margin-bottom: 10px;
 	overflow: auto;
@@ -219,4 +223,17 @@ button {
 .close:hover {
 	color: #000;
 	cursor: pointer;
+}
+
+.modal_window table, th, td {
+	border: 1px solid #d3d3d3;
+}
+
+.modal_window td, th {
+	height: 30px;
+	padding-left: 10px;
+}
+
+.modal_window tr:nth-child(even) {
+	background-color: #f2f2f2;
 }

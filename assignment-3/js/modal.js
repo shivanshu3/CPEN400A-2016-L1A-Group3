@@ -11,7 +11,6 @@
  */
 var Modal = function() {
 	// Instance variables:
-	this.height = 300; // TODO: Do not hard code
 	this.width = 700; // TODO: Do not hard code
 	this.itemsTable = null;
 
@@ -85,7 +84,7 @@ Modal.prototype.createBackgroundDiv = function() {
 
 Modal.prototype.createWindowDiv = function() {
 	var windowDiv = $('<div>');
-	windowDiv.height(this.height);
+	windowDiv.addClass('modal_window');
 	windowDiv.width(this.width);
 	windowDiv.css('position', 'fixed');
 	windowDiv.css('top', '50%');
