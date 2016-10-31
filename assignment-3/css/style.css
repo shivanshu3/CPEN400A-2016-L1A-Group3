@@ -170,6 +170,7 @@ button {
 .cartimg {
 	height: 170px;
 	width: 100%;
+	opacity: 0.3;
 }
 
 .product:hover .cart {
@@ -185,7 +186,6 @@ button {
 	width: 75px;
 	text-align: center;
 	font-size: 13px;
-	opacity: 0.9;
 	border-radius: 10px;
 	border: none;
 	visibility: hidden;
