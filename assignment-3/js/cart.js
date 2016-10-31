@@ -99,6 +99,12 @@ function initPage() {
 	// Initialization functions:
 	setInterval(inactiveTimeTracking, 1000);
 	initProducts();
+
+	// Cart button click handler:
+	var cartModal = new Modal();
+	$('#cartButton').click(function() {
+		cartModal.show();
+	});
 }
 
 /**
