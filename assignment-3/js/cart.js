@@ -196,8 +196,9 @@ function initProducts() {
  * long the user was inactive for.
  */
 function inactiveTimeTracking() {
-	if(window.cartModal.isVisible())
+	if(window.cartModal.isVisible()) {
 		return;
+	}
 
 	inactiveTime += 1;
 	displayInactiveTime(inactiveTime);
@@ -236,9 +237,9 @@ function addToCart(productName) {
 	if(inCartQuantity === undefined) {
 		cart[productName] = 1;
 		showRemoveButton(true, productName);
-	}
-	else
+	} else {
 		cart[productName] = inCartQuantity + 1;
+	}
 
 	cartTotal += products[productName].price;
 	updateCartTotal(cartTotal);
@@ -263,9 +264,9 @@ function removeFromCart(productName) {
 		if(inCartQuantity === 1) {
 			delete cart[productName];
 			showRemoveButton(false, productName);
-		}
-		else
+		} else {
 			cart[productName] = inCartQuantity - 1;
+		}
 
 		products[productName].quantity += 1;
 
