@@ -13,6 +13,7 @@ var Modal = function() {
 	// Instance variables:
 	this.width = 700; // TODO: Do not hard code
 	this.itemsTable = null;
+	this.footerDiv = null;
 
 	// Create the main DOM elements:
 	this.backgroundDiv = this.createBackgroundDiv();
@@ -141,8 +142,17 @@ Modal.prototype.createContentsDiv = function() {
 	this.itemsTable.append(tableHead);
 	this.itemsTable.append($('<tbody>'));
 
+	this.footerDiv = $('<div>');
+	this.footerDiv.css('margin-top', 20);
+	var checkoutButton = $('<button>Checkout</button>');
+	var subtotalDiv = $('<div>Subtotal: $0</div>');
+	subtotalDiv.css('float', 'right');
+	this.footerDiv.append(checkoutButton);
+	this.footerDiv.append(subtotalDiv);
+
 	contentsDiv.append(heading);
 	contentsDiv.append(this.itemsTable);
+	contentsDiv.append(this.footerDiv);
 
 	return contentsDiv;
 };
