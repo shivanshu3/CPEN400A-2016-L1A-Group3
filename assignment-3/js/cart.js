@@ -201,8 +201,8 @@ function inactiveTimeTracking() {
 }
 
 function displayInactiveTime(time) {
-	var footerElement = document.getElementById("footer");
-	footerElement.innerText = "Inactive time: " + time + " seconds"; 
+	var inactiveTimeSpan = $('#inactive_time_span');
+	inactiveTimeSpan.text(time);
 }
 
 /**
