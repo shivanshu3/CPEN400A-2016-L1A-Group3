@@ -314,18 +314,3 @@ function showRemoveButton(show, productName) {
 		removeButton.css('display', 'none');
 	}
 }
-
-/**
- * This function displays the cart modal when user clicks on the cart button
- */
-function showModal() {
-	$('#cartModal').css('display', 'block');
-}
-
-/**
- * This function closes the modal when the user clicks on the x at the
- * top right corner of the modal
- */
-function modalClose() {
-	$('#cartModal').css('display', 'none');
-}
