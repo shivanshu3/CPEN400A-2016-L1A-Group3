@@ -263,8 +263,8 @@ function removeFromCart(productName) {
 }
 
 function updateCartTotal(cartTotal) {
-	var priceElement = document.getElementById("cartButton");
-	priceElement.innerText = "Cart($" + cartTotal + ")";
+	var cartButton = $('#cartButton');
+	cartButton.text('Cart($' + cartTotal + ')');
 }
 
 /**
