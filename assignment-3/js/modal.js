@@ -178,10 +178,10 @@ Modal.prototype.refreshView = function() {
 	for (var item in cart) {
 		var row = $('<tr>');
 		var totalCost = cart[item] * products[item].price;
-		row.append('<td>' + item + '</td>');
-		row.append('<td>' + cart[item] + '</td>');
-		row.append('<td>' + products[item].price + '</td>');
-		row.append('<td>' + totalCost + '</td>');
+		row.append('<td class="item_name">' + item + '</td>');
+		row.append('<td class="item_quantity">' + cart[item] + '</td>');
+		row.append('<td class="item_unit_cost">' + products[item].price + '</td>');
+		row.append('<td class="item_total_cost">' + totalCost + '</td>');
 		var plusButton = createCellButton('+', '#a6e4a6');
 		(function() {
 			var _row = row;
@@ -206,13 +206,17 @@ Modal.prototype.refreshView = function() {
 };
 
 Modal.prototype.plusButtonClicked = function(row) {
-	console.log('+ clicked');
-	console.log(row);
+	var productName = row.find('.item_name').text();
+	if (addToCart(productName)) {
+		this.refreshView();
+	}
 };
 
 Modal.prototype.minusButtonClicked = function(row) {
-	console.log('- clicked');
-	console.log(row);
+	var productName = row.find('.item_name').text();
+	if (removeFromCart(productName)) {
+		this.refreshView();
+	}
 };
 
 Modal.prototype.updateSubtotal = function() {
