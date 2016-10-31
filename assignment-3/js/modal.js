@@ -147,17 +147,54 @@ Modal.prototype.createContentsDiv = function() {
 };
 
 Modal.prototype.refreshView = function() {
+	var _this = this;
+
+	var createCellButton = function(text, color) {
+		var button = $('<td>');
+		button.css('padding-left', 0);
+		button.css('text-align', 'center');
+		button.css('cursor', 'pointer');
+		button.css('background-color', color);
+		button.css('user-select', 'none');
+		button.width(30);
+		button.text(text);
+		return button;
+	};
+
 	for (var item in cart) {
-		console.log(item);
 		var row = $('<tr>');
 		var totalCost = cart[item] * products[item].price;
 		row.append('<td>' + item + '</td>');
 		row.append('<td>' + cart[item] + '</td>');
 		row.append('<td>' + products[item].price + '</td>');
 		row.append('<td>' + totalCost + '</td>');
-		row.append('<td>' + '<button>+</button>' + '</td>');
-		row.append('<td>' + '<button>-</button>' + '</td>');
+		var plusButton = createCellButton('+', '#a6e4a6');
+		(function() {
+			var _row = row;
+			plusButton.click(function() {
+				_this.plusButtonClicked(_row);
+			});
+		})();
+		row.append(plusButton);
+		var minusButton = createCellButton('-', '#ff8e8e');
+		(function() {
+			var _row = row;
+			minusButton.click(function() {
+				_this.minusButtonClicked(_row);
+			});
+		})();
+		row.append(minusButton);
 
 		this.itemsTable.append(row);
 	}
+};
+
+Modal.prototype.plusButtonClicked = function(row) {
+	console.log('+ clicked');
+	console.log(row);
+};
+
+Modal.prototype.minusButtonClicked = function(row) {
+	console.log('- clicked');
+	console.log(row);
 };
