@@ -13,9 +13,14 @@ var Modal = function() {
 	// Instance variables:
 	this.height = 300; // TODO: Do not hard code
 	this.width = 700; // TODO: Do not hard code
+
+	// Create the main DOM elements:
 	this.backgroundDiv = this.createBackgroundDiv();
 	this.windowDiv = this.createWindowDiv();
 	this.closeButton = this.createCloseButton();
+
+	// Hide them before we add them to the DOM:
+	this.hide();
 
 	// Add everything to the DOM:
 	$('body').append(this.backgroundDiv);
@@ -27,12 +32,16 @@ var Modal = function() {
  * Shows the modal window.
  */
 Modal.prototype.show = function() {
+	this.backgroundDiv.css('display', 'block');
+	this.windowDiv.css('display', 'block');
 };
 
 /**
  * Hides the modal window.
  */
 Modal.prototype.hide = function() {
+	this.backgroundDiv.css('display', 'none');
+	this.windowDiv.css('display', 'none');
 };
 
 /**
