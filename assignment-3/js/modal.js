@@ -34,6 +34,14 @@ var Modal = function() {
 Modal.prototype.show = function() {
 	this.backgroundDiv.css('display', 'block');
 	this.windowDiv.css('display', 'block');
+	var _this = this;
+
+	// Esc key handler:
+	$(document).on('keyup.modal', function(e) {
+		if (e.keyCode == 27) {
+			_this.hide();
+		}
+	});
 };
 
 /**
@@ -42,6 +50,9 @@ Modal.prototype.show = function() {
 Modal.prototype.hide = function() {
 	this.backgroundDiv.css('display', 'none');
 	this.windowDiv.css('display', 'none');
+
+	// Unbind the esc key handler:
+	$(document).unbind('keyup.modal');
 };
 
 /**
