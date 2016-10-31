@@ -15,10 +15,12 @@ var Modal = function() {
 	this.width = 700; // TODO: Do not hard code
 	this.backgroundDiv = this.createBackgroundDiv();
 	this.windowDiv = this.createWindowDiv();
+	this.closeButton = this.createCloseButton();
 
 	// Add everything to the DOM:
 	$('body').append(this.backgroundDiv);
 	$('body').append(this.windowDiv);
+	this.windowDiv.append(this.closeButton);
 };
 
 /**
@@ -69,4 +71,30 @@ Modal.prototype.createWindowDiv = function() {
 	windowDiv.css('border-radius', 10);
 
 	return windowDiv;
+};
+
+Modal.prototype.createCloseButton = function() {
+	var closeButton = $('<button>');
+	closeButton.css('position', 'fixed');
+	closeButton.css('right', -15);
+	closeButton.css('top', -15);
+	closeButton.css('height', 30);
+	closeButton.css('width', 30);
+	closeButton.css('background-color', 'black');
+	closeButton.css('border-style', 'solid');
+	closeButton.css('border-color', 'white');
+	closeButton.css('border-radius', 15);
+	closeButton.css('box-shadow', '0 4px 8px 0 rgba(0,0,0,0.2)');
+	closeButton.css('color', 'white');
+	closeButton.css('font-weight', 'bold');
+	closeButton.css('outline', 'none');
+
+	closeButton.text('X');
+
+	var _this = this;
+	closeButton.click(function() {
+		_this.hide();
+	});
+
+	return closeButton;
 };
