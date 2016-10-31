@@ -74,7 +74,7 @@ body {
 }
 
 button {
-   cursor: pointer;
+	cursor: pointer;
 }
 
 #mainContent {
@@ -209,43 +209,43 @@ button {
 }
 
 .modal {
-    display: none;
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 300px;
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.65); 
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 300px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.65);
 }
 
 .modalContent {
-    position: relative;
-    background-color: white;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
+	position: relative;
+	background-color: white;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	width: 80%;
 }
 
 .close {
-    color: white;
-    float: right;
-    font-size: 25px;
-    font-weight: bold;
+	color: white;
+	float: right;
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .close:hover {
-    color: #000;
-    cursor: pointer;
+	color: #000;
+	cursor: pointer;
 }
 
 .modalHeader {
-    padding: 2px 14px;
-    background-color: #002859;
-    color: white;
+	padding: 2px 14px;
+	background-color: #002859;
+	color: white;
 }
 
 .modalBody {
@@ -253,7 +253,7 @@ button {
 }
 
 .modalFooter {
-    padding: 10px 14px;
-    background-color: #002859;
-    color: white;
+	padding: 10px 14px;
+	background-color: #002859;
+	color: white;
 }

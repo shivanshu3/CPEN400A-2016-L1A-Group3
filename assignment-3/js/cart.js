@@ -39,7 +39,7 @@ function initProductsVar(productsPrices) {
 		var imagePath = productsPrices[i];
 		var productName = productNameFromImagePath(imagePath);
 		var productPrice = productPriceFromImagePath(imagePath);
-		
+
 		// All quatities are initialized to 5, and all prices are initialized
 		// to the product's respective price amount
 		products[productName] = {
@@ -323,7 +323,7 @@ function showModal() {
 }
 
 /**
- * This function closes the modal when the user clicks on the x at the 
+ * This function closes the modal when the user clicks on the x at the
  * top right corner of the modal
  */
 function modalClose() {
