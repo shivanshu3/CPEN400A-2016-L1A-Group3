@@ -217,6 +217,7 @@ function displayInactiveTime(time) {
 /**
  * Adds the given product to the cart.
  * If we run out of this product, then that product is not added to the cart.
+ * Returns true if the op is successful, false otherwise.
  */
 function addToCart(productName) {
 	inactiveTime = 0;
@@ -225,7 +226,7 @@ function addToCart(productName) {
 
 	if(itemQuantity === 0) {
 		alert(productName + " is no longer in stock.");
-		return;
+		return false;
 	}
 
 	products[productName].quantity = itemQuantity - 1;
@@ -242,20 +243,23 @@ function addToCart(productName) {
 	cartTotal += products[productName].price;
 	updateCartTotal(cartTotal);
 	alert(productName + " was added to your cart.");
+	return true;
 }
 
 /**
  * Removes the given product from the cart if the user has
  * the item in his/her cart.
+ * Returns true if the op is successful, false otherwise.
  */
 function removeFromCart(productName) {
 	inactiveTime = 0;
 
 	var inCartQuantity = cart[productName];
 
-	if(inCartQuantity === undefined)
+	if(inCartQuantity === undefined) {
 		alert(productName + " is not in your cart.");
-	else {
+		return false;
+	} else {
 		if(inCartQuantity === 1) {
 			delete cart[productName];
 			showRemoveButton(false, productName);
@@ -268,6 +272,7 @@ function removeFromCart(productName) {
 		cartTotal -= products[productName].price;
 		updateCartTotal(cartTotal);
 		alert(productName + " was removed from your cart.");
+		return true;
 	}
 }
 
