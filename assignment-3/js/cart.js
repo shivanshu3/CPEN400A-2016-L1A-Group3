@@ -304,27 +304,27 @@ function showItemsWithInterval(index, productsToDisplay) {
  * the product is currently in the shopper's cart.
  */
 function showRemoveButton(show, productName) {
- 	var buttonClass = document.getElementsByClassName("remove");
+	var buttonClass = document.getElementsByClassName("remove");
 
- 	if(!buttonClass)
- 		return;
+	if(!buttonClass)
+		return;
 
- 	var i = 0;
- 	var index;
- 	for(var key in products) {
- 		if(key === productName) {
- 			index = i;
- 			break;
- 		}
+	var i = 0;
+	var index;
+	for(var key in products) {
+		if(key === productName) {
+			index = i;
+			break;
+		}
 
- 		i++;
- 	}
+		i++;
+	}
 
- 	if(show)
- 		buttonClass[index].style.display = 'block';
- 	else
- 		buttonClass[index].style.display = 'none';
- }
+	if(show)
+		buttonClass[index].style.display = 'block';
+	else
+		buttonClass[index].style.display = 'none';
+}
 
 /**
  * This function displays the cart modal when user clicks on the cart button
