@@ -20,7 +20,6 @@ function initGlobalVars() {
 	];
 	window.products = initProductsVar(productsPrices);
 	window.inactiveTime = 0;
-	window.cartDisplayRunning = false;
 	window.cartTotal = 0;
 }
 
@@ -196,8 +195,8 @@ function initProducts() {
  * long the user was inactive for.
  */
 function inactiveTimeTracking() {
-	if(cartDisplayRunning)
-		return;
+	// if(cartDisplayRunning)
+	// 	return;
 
 	inactiveTime += 1;
 	displayInactiveTime(inactiveTime);
@@ -279,38 +278,6 @@ function removeFromCart(productName) {
 function updateCartTotal(cartTotal) {
 	var cartButton = $('#cartButton');
 	cartButton.text('Cart($' + cartTotal + ')');
-}
-
-/**
- * Shows the cart info the user by using alerts.
- */
-function showCart() {
-	cartDisplayRunning = true;
-	var productsToDisplay = [];
-	for(var item in cart) {
-		productsToDisplay.push(item + ': ' + cart[item]);
-	}
-
-	showItemsWithInterval(0, productsToDisplay);
-}
-
-/**
- * Works in conjunction with the showCart function.
- */
-function showItemsWithInterval(index, productsToDisplay) {
-	if(productsToDisplay.length > index) {
-		alert(productsToDisplay[index]);
-		index += 1;
-
-		if(productsToDisplay.length > index) {
-			setTimeout(showItemsWithInterval, 5000, index, productsToDisplay);
-			return;
-		}
-	}
-
-	alert("Your entire shopping cart has been displayed.");
-	cartDisplayRunning = false;
-	inactiveTime = 0;
 }
 
 /**
