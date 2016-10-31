@@ -25,7 +25,7 @@ body {
 #welcomeBanner {
 	margin-left: 10px;
 	margin-top: 10px;
-	width: 630px;
+	width: 600px;
 	height: 118.5px;
 	background: #002859;
 	text-align: center;
@@ -38,7 +38,7 @@ body {
 }
 
 #cartButton {
-	width: 70px;
+	width: 100px;
 	height: 118.5px;
 	margin-left: 10px;
 	margin-top: 10px;
@@ -47,6 +47,7 @@ body {
 	border-style: solid;
 	border-radius: 10px;
 	color: white;
+	outline: none;
 }
 
 #cartButton:hover {
