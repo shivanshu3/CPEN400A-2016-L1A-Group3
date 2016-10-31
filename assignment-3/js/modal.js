@@ -150,6 +150,9 @@ Modal.prototype.createContentsDiv = function() {
 Modal.prototype.refreshView = function() {
 	var _this = this;
 
+	var itemsTableBody = this.itemsTable.find('tbody');
+	itemsTableBody.empty();
+
 	var createCellButton = function(text, color) {
 		var button = $('<td>');
 		button.css('padding-left', 0);
@@ -161,8 +164,6 @@ Modal.prototype.refreshView = function() {
 		button.text(text);
 		return button;
 	};
-
-	var itemsTableBody = this.itemsTable.find('tbody');
 
 	for (var item in cart) {
 		var row = $('<tr>');
