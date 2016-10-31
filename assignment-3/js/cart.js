@@ -126,6 +126,9 @@ function initProducts() {
 		// "$10"
 		var productPrice = '$' + productPriceFromImagePath(imagePath);
 
+		// Add IDs to the product divs for easy retrieval later on:
+		productDiv.attr('id', 'product_' + productName);
+
 		// Preparing divs to be inserted into the product div:
 
 		var productImage = $('<img>');
@@ -304,26 +307,12 @@ function showItemsWithInterval(index, productsToDisplay) {
  * the product is currently in the shopper's cart.
  */
 function showRemoveButton(show, productName) {
-	var buttonClass = document.getElementsByClassName("remove");
-
-	if(!buttonClass)
-		return;
-
-	var i = 0;
-	var index;
-	for(var key in products) {
-		if(key === productName) {
-			index = i;
-			break;
-		}
-
-		i++;
+	var removeButton = $('#product_' + productName + ' button.remove');
+	if (show) {
+		removeButton.css('display', 'block');
+	} else {
+		removeButton.css('display', 'none');
 	}
-
-	if(show)
-		buttonClass[index].style.display = 'block';
-	else
-		buttonClass[index].style.display = 'none';
 }
 
 /**
