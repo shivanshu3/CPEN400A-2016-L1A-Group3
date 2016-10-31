@@ -145,7 +145,7 @@ Modal.prototype.createContentsDiv = function() {
 	this.footerDiv = $('<div>');
 	this.footerDiv.css('margin-top', 20);
 	var checkoutButton = $('<button>Checkout</button>');
-	var subtotalDiv = $('<div>Subtotal: $0</div>');
+	var subtotalDiv = $('<div>Subtotal: $<span class="subtotal_span">-</span></div>');
 	subtotalDiv.css('float', 'right');
 	this.footerDiv.append(checkoutButton);
 	this.footerDiv.append(subtotalDiv);
@@ -201,6 +201,8 @@ Modal.prototype.refreshView = function() {
 
 		itemsTableBody.append(row);
 	}
+
+	this.updateSubtotal();
 };
 
 Modal.prototype.plusButtonClicked = function(row) {
@@ -211,4 +213,14 @@ Modal.prototype.plusButtonClicked = function(row) {
 Modal.prototype.minusButtonClicked = function(row) {
 	console.log('- clicked');
 	console.log(row);
+};
+
+Modal.prototype.updateSubtotal = function() {
+	var subtotal = 0;
+	for (var item in cart) {
+		subtotal += (cart[item] * products[item].price);
+	}
+
+	var subtotalSpan = this.footerDiv.find('.subtotal_span');
+	subtotalSpan.text(subtotal);
 };
