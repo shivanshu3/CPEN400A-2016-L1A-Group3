@@ -148,4 +148,17 @@ Modal.prototype.createContentsDiv = function() {
 };
 
 Modal.prototype.refreshView = function() {
+	for (var item in cart) {
+		console.log(item);
+		var row = $('<tr>');
+		var totalCost = cart[item] * products[item].price;
+		row.append('<td>' + item + '</td>');
+		row.append('<td>' + cart[item] + '</td>');
+		row.append('<td>' + products[item].price + '</td>');
+		row.append('<td>' + totalCost + '</td>');
+		row.append('<td>' + '<button>+</button>' + '</td>');
+		row.append('<td>' + '<button>-</button>' + '</td>');
+
+		this.itemsTable.append(row);
+	}
 };
