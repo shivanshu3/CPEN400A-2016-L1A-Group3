@@ -13,11 +13,13 @@ var Modal = function() {
 	// Instance variables:
 	this.height = 300; // TODO: Do not hard code
 	this.width = 700; // TODO: Do not hard code
+	this.itemsTable = null;
 
 	// Create the main DOM elements:
 	this.backgroundDiv = this.createBackgroundDiv();
 	this.windowDiv = this.createWindowDiv();
 	this.closeButton = this.createCloseButton();
+	this.contentsDiv = this.createContentsDiv();
 
 	// Hide them before we add them to the DOM:
 	this.hide();
@@ -26,12 +28,16 @@ var Modal = function() {
 	$('body').append(this.backgroundDiv);
 	$('body').append(this.windowDiv);
 	this.windowDiv.append(this.closeButton);
+	this.windowDiv.append(this.contentsDiv);
 };
 
 /**
  * Shows the modal window.
  */
 Modal.prototype.show = function() {
+	// This will update the cart contents view:
+	this.refreshView();
+
 	this.backgroundDiv.css('display', 'block');
 	this.windowDiv.css('display', 'block');
 	var _this = this;
@@ -89,6 +95,8 @@ Modal.prototype.createWindowDiv = function() {
 	windowDiv.css('z-index', 1001);
 	windowDiv.css('box-shadow', '6px 7px 30px 5px rgba(0,0,0,0.7)');
 	windowDiv.css('border-radius', 10);
+	windowDiv.css('box-sizing', 'border-box');
+	windowDiv.css('padding', 20);
 
 	return windowDiv;
 };
@@ -117,4 +125,27 @@ Modal.prototype.createCloseButton = function() {
 	});
 
 	return closeButton;
+};
+
+Modal.prototype.createContentsDiv = function() {
+	var contentsDiv = $('<div>');
+
+	var heading = $('<h1>');
+	heading.text('Your Shopping Cart');
+	heading.css('font-size', 24);
+
+	this.itemsTable = $('<table>');
+	this.itemsTable.width('100%');
+	var tableHead = $('<thead>');
+	tableHead.append('<tr><th>Item</th><th>Qty</th><th>Unit Cost</th>' +
+		'<th>Total Cost</th><th></th><th></th></tr>');
+	this.itemsTable.append(tableHead);
+
+	contentsDiv.append(heading);
+	contentsDiv.append(this.itemsTable);
+
+	return contentsDiv;
+};
+
+Modal.prototype.refreshView = function() {
 };
