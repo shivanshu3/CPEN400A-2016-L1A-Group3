@@ -139,6 +139,7 @@ Modal.prototype.createContentsDiv = function() {
 	tableHead.append('<tr><th>Item</th><th>Qty</th><th>Unit Cost</th>' +
 		'<th>Total Cost</th><th></th><th></th></tr>');
 	this.itemsTable.append(tableHead);
+	this.itemsTable.append($('<tbody>'));
 
 	contentsDiv.append(heading);
 	contentsDiv.append(this.itemsTable);
@@ -160,6 +161,8 @@ Modal.prototype.refreshView = function() {
 		button.text(text);
 		return button;
 	};
+
+	var itemsTableBody = this.itemsTable.find('tbody');
 
 	for (var item in cart) {
 		var row = $('<tr>');
@@ -185,7 +188,7 @@ Modal.prototype.refreshView = function() {
 		})();
 		row.append(minusButton);
 
-		this.itemsTable.append(row);
+		itemsTableBody.append(row);
 	}
 };
 
