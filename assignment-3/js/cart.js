@@ -319,8 +319,7 @@ function showRemoveButton(show, productName) {
  * This function displays the cart modal when user clicks on the cart button
  */
 function showModal() {
-	var modal = document.getElementById('cartModal');
-	modal.style.display = "block";
+	$('#cartModal').css('display', 'block');
 }
 
 /**
@@ -328,6 +327,5 @@ function showModal() {
  * top right corner of the modal
  */
 function modalClose() {
-	var modal = document.getElementById('cartModal');
-	modal.style.display = "none";
+	$('#cartModal').css('display', 'none');
 }
