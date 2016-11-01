@@ -101,9 +101,11 @@ function initPage() {
 	initProducts();
 
 	// Cart button click handler:
-	window.cartModal = new Modal();
+	window.cartModal = new Modal(700);
 	$('#cartButton').click(function() {
 		window.cartModal.show();
+		inactiveTime = 0;
+		displayInactiveTime(inactiveTime);
 	});
 }
 

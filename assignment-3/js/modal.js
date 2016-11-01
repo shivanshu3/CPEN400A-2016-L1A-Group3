@@ -8,10 +8,11 @@
 /**
  * The constructor.
  * It creates the modal window in the DOM, but is not active at this time.
+ * The width of the modal is set to what's passed to the constructor.
  */
-var Modal = function() {
+var Modal = function(width) {
 	// Instance variables:
-	this.width = 700; // TODO: Do not hard code
+	this.width = width;
 	this.itemsTable = null;
 	this.footerDiv = null;
 
