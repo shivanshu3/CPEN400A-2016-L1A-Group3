@@ -185,13 +185,15 @@ Modal.prototype.refreshView = function() {
 	var itemsTableBody = this.itemsTable.find('tbody');
 	itemsTableBody.empty();
 
-	var createCellButton = function(text, color) {
+	var createCellButton = function(text, bgColor, textColor) {
 		var button = $('<td>');
 		button.css('padding-left', 0);
 		button.css('text-align', 'center');
 		button.css('cursor', 'pointer');
-		button.css('background-color', color);
+		button.css('background-color', bgColor);
+		button.css('color', textColor);
 		button.css('user-select', 'none');
+		button.css('font-weight', '900');
 		button.width(30);
 		button.text(text);
 		return button;
@@ -204,7 +206,7 @@ Modal.prototype.refreshView = function() {
 		row.append('<td class="item_quantity">' + cart[item] + '</td>');
 		row.append('<td class="item_unit_cost">' + products[item].price + '</td>');
 		row.append('<td class="item_total_cost">' + totalCost + '</td>');
-		var plusButton = createCellButton('+', '#a6e4a6');
+		var plusButton = createCellButton('+', '#a6e4a6', 'green');
 		(function() {
 			var _row = row;
 			plusButton.click(function() {
@@ -212,7 +214,7 @@ Modal.prototype.refreshView = function() {
 			});
 		})();
 		row.append(plusButton);
-		var minusButton = createCellButton('-', '#ff8e8e');
+		var minusButton = createCellButton(unescape('%u2013'), '#ff8e8e', 'red');
 		(function() {
 			var _row = row;
 			minusButton.click(function() {
