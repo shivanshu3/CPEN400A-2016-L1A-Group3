@@ -167,7 +167,7 @@ Modal.prototype.createContentsDiv = function() {
 	checkoutButton.css('background-color', 'antiquewhite');
 	checkoutButton.css('border-style', 'solid');
 	checkoutButton.css('outline', 'none');
-	var subtotalDiv = $('<div>Subtotal: $<span class="subtotal_span">-</span></div>');
+	var subtotalDiv = $('<div><b>Subtotal:</b> $<span class="subtotal_span">-</span></div>');
 	subtotalDiv.css('float', 'right');
 	this.footerDiv.append(checkoutButton);
 	this.footerDiv.append(subtotalDiv);
@@ -208,8 +208,8 @@ Modal.prototype.refreshView = function() {
 		var totalCost = cart[item] * products[item].price;
 		row.append('<td class="item_name">' + item + '</td>');
 		row.append('<td class="item_quantity">' + cart[item] + '</td>');
-		row.append('<td class="item_unit_cost">' + products[item].price + '</td>');
-		row.append('<td class="item_total_cost">' + totalCost + '</td>');
+		row.append('<td class="item_unit_cost">$' + products[item].price + '</td>');
+		row.append('<td class="item_total_cost">$' + totalCost + '</td>');
 		var plusButton = createCellButton('+', '#a6e4a6', 'green');
 		(function() {
 			var _row = row;
