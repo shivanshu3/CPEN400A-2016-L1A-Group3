@@ -163,6 +163,10 @@ Modal.prototype.createContentsDiv = function() {
 	this.footerDiv = $('<div>');
 	this.footerDiv.css('margin-top', 20);
 	var checkoutButton = $('<button>Checkout</button>');
+	checkoutButton.height(30);
+	checkoutButton.css('background-color', 'antiquewhite');
+	checkoutButton.css('border-style', 'solid');
+	checkoutButton.css('outline', 'none');
 	var subtotalDiv = $('<div>Subtotal: $<span class="subtotal_span">-</span></div>');
 	subtotalDiv.css('float', 'right');
 	this.footerDiv.append(checkoutButton);
