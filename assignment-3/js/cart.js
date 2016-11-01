@@ -210,6 +210,9 @@ function inactiveTimeTracking() {
 
 }
 
+/**
+ * Updates the inactive timer in the footer.
+ */
 function displayInactiveTime(time) {
 	var inactiveTimeSpan = $('#inactive_time_span');
 	inactiveTimeSpan.text(time);
@@ -277,6 +280,9 @@ function removeFromCart(productName) {
 	}
 }
 
+/**
+ * Updates the total amount in the cart button.
+ */
 function updateCartTotal(cartTotal) {
 	var cartButton = $('#cartButton');
 	cartButton.text('Cart($' + cartTotal + ')');

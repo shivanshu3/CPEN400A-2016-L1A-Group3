@@ -70,6 +70,10 @@ Modal.prototype.isVisible = function() {
 
 /** PRIVATE METHODS **/
 
+/**
+ * Creates a grey translucent div which covers the entire screen
+ * to block user input to the underlying elements.
+ */
 Modal.prototype.createBackgroundDiv = function() {
 	var backgroundDiv = $('<div>');
 	backgroundDiv.css('background-color', 'grey');
@@ -84,6 +88,10 @@ Modal.prototype.createBackgroundDiv = function() {
 	return backgroundDiv;
 };
 
+/**
+ * Creates a window div in the center of the screen on top of the
+ * background div. This is the main div inside of which everything else goes.
+ */
 Modal.prototype.createWindowDiv = function() {
 	var windowDiv = $('<div>');
 	windowDiv.addClass('modal_window');
@@ -102,6 +110,9 @@ Modal.prototype.createWindowDiv = function() {
 	return windowDiv;
 };
 
+/**
+ * Creates a close button which can be placed inside the window div.
+ */
 Modal.prototype.createCloseButton = function() {
 	var closeButton = $('<button>');
 	closeButton.css('position', 'fixed');
@@ -128,6 +139,11 @@ Modal.prototype.createCloseButton = function() {
 	return closeButton;
 };
 
+/**
+ * Creates a content div inside of which there is a heading, and table
+ * for showing the items in the cart, and a footer with a checkout button
+ * and a subtotal amount div.
+ */
 Modal.prototype.createContentsDiv = function() {
 	var contentsDiv = $('<div>');
 
@@ -158,6 +174,10 @@ Modal.prototype.createContentsDiv = function() {
 	return contentsDiv;
 };
 
+/**
+ * Refreshes the DOM elements inside the content window.
+ * Ex: The items table and the subtotal amount div.
+ */
 Modal.prototype.refreshView = function() {
 	var _this = this;
 
@@ -206,6 +226,9 @@ Modal.prototype.refreshView = function() {
 	this.updateSubtotal();
 };
 
+/**
+ * This method is fired when the plus button inside the items table is clicked.
+ */
 Modal.prototype.plusButtonClicked = function(row) {
 	var productName = row.find('.item_name').text();
 	if (addToCart(productName)) {
@@ -213,6 +236,9 @@ Modal.prototype.plusButtonClicked = function(row) {
 	}
 };
 
+/**
+ * This method is fired when the minus button inside the items table is clicked.
+ */
 Modal.prototype.minusButtonClicked = function(row) {
 	var productName = row.find('.item_name').text();
 	if (removeFromCart(productName)) {
@@ -220,6 +246,9 @@ Modal.prototype.minusButtonClicked = function(row) {
 	}
 };
 
+/**
+ * Calculates and updates the subtotal amount value in the content window.
+ */
 Modal.prototype.updateSubtotal = function() {
 	var subtotal = 0;
 	for (var item in cart) {
