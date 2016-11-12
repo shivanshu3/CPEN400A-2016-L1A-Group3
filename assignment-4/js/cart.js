@@ -34,8 +34,6 @@ function initGlobalVars() {
 function initProductsVar() {
 	var products = {};
 
-	serverRequest
-
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
 	
