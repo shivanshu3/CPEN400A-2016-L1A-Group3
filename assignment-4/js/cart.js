@@ -45,13 +45,10 @@ function initProductsVar(productsPrices) {
 				console.log(result);
 
 				//populate products var, incomplete
-				for(item in result){
-					console.log(item);
-					console.log(item["price"]);
-					console.log(item["quantity"]);
+				for(var item in result){
 					products[item] = {
-						'price' : item.price,
-						'quantity' : item.quantity,
+						'price' : result[item].price,
+						'quantity' : result[item].quantity,
 					};
 				}
 			}
