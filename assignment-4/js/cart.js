@@ -42,7 +42,7 @@ function initProductsVar(productsPrices) {
 			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
 				var result = JSON.parse(xhr.responseText);
 
-				//populating products var
+				//populating the products Object with each product, its price and quantity
 				for(var item in result){
 					products[item] = {
 						'price' : result[item].price,
