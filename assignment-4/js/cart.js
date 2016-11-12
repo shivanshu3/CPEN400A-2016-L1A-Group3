@@ -18,7 +18,7 @@ function initGlobalVars() {
 		"images/PC3_$300.png",
 		"images/Tent_$100.png"
 	];
-	window.products = initProductsVar(productsPrices);
+	window.products = initProductsVar();
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
 	window.cartModal = null;
@@ -31,8 +31,10 @@ function initGlobalVars() {
  * Returns a list of objects comprising the products along with their prices and quantities,
  * which can be assigned to the global variable 'products'
  */
-function initProductsVar(productsPrices) {
+function initProductsVar() {
 	var products = {};
+
+	serverRequest
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
