@@ -35,6 +35,23 @@ function initGlobalVars() {
 function initProductsVar(productsPrices) {
 	var products = {};
 
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
+	
+	xhr.onLoad = function() {
+		if(xhr.status == 200) {
+			if(xhr.responseHeader("Content-type") == JSON) {
+				var result = JSON.parse(xhr.responseText);
+				
+				//populate products var
+			}
+		}
+		console.log(xhr.status);
+	}
+	
+	xhr.send();	
+
+/*
 	for (var i = 0; i < productsPrices.length; i++) {
 		var imagePath = productsPrices[i];
 		var productName = productNameFromImagePath(imagePath);
@@ -47,7 +64,7 @@ function initProductsVar(productsPrices) {
 			'quantity' : 5,
 		};
 	}
-
+*/
 	return products;
 }
 
