@@ -26,11 +26,10 @@ function initGlobalVars() {
 
 /**
  * Initializes the products global hashmap which is a map of <ProductName> to
- * <ProductPrice>
- * It requires an array of image paths as input. Each element of the array
- * should be an image path with the image name of the following format:
- * <product_name>_$<product_price>.<extension>
- * Returns a hashmap, which can be assigned to the global variable 'products'
+ * <ProductPrice> and <ProductQuantity>
+ * It fulfills this by making an AJAX call to the url https://cpen400a.herokuapp.com/products
+ * Returns a list of objects comprising the products along with their prices and quantities,
+ * which can be assigned to the global variable 'products'
  */
 function initProductsVar(productsPrices) {
 	var products = {};
