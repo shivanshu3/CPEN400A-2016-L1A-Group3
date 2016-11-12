@@ -44,7 +44,7 @@ function initProductsVar(productsPrices) {
 				var result = JSON.parse(xhr.responseText);
 				console.log(result);
 
-				//populate products var, incomplete
+				//populating products var
 				for(var item in result){
 					products[item] = {
 						'price' : result[item].price,
@@ -53,25 +53,9 @@ function initProductsVar(productsPrices) {
 				}
 			}
 		}
-		console.log(xhr.status);
 	}
 	
 	xhr.send();	
-
-/*
-	for (var i = 0; i < productsPrices.length; i++) {
-		var imagePath = productsPrices[i];
-		var productName = productNameFromImagePath(imagePath);
-		var productPrice = productPriceFromImagePath(imagePath);
-
-		// All quatities are initialized to 5, and all prices are initialized
-		// to the product's respective price amount
-		products[productName] = {
-			'price' : productPrice,
-			'quantity' : 5,
-		};
-	}
-*/
 	return products;
 }
 
