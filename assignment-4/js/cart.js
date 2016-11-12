@@ -38,12 +38,22 @@ function initProductsVar(productsPrices) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
 	
-	xhr.onLoad = function() {
+	xhr.onload = function() {
 		if(xhr.status == 200) {
-			if(xhr.responseHeader("Content-type") == JSON) {
+			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
 				var result = JSON.parse(xhr.responseText);
-				
-				//populate products var
+				console.log(result);
+
+				//populate products var, incomplete
+				for(item in result){
+					console.log(item);
+					console.log(item["price"]);
+					console.log(item["quantity"]);
+					products[item] = {
+						'price' : item.price,
+						'quantity' : item.quantity,
+					};
+				}
 			}
 		}
 		console.log(xhr.status);
