@@ -42,7 +42,6 @@ function initProductsVar(productsPrices) {
 		if(xhr.status == 200) {
 			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
 				var result = JSON.parse(xhr.responseText);
-				console.log(result);
 
 				//populating products var
 				for(var item in result){
