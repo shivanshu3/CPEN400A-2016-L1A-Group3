@@ -40,7 +40,7 @@ function initProductsVar() {
 	
 	xhr.onload = function() {
 		if(xhr.status == 200) {
-			console.log("Request successfull, status 200.");
+			console.log("Request successful, status 200.");
 
 			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
 				var result = JSON.parse(xhr.responseText);
@@ -53,15 +53,20 @@ function initProductsVar() {
 					};
 				}
 			}
+		} else {
+			console.log("Received error code " + xhr.status);
+			setTimeout(function () { initProductsVar(); }, 2000);
 		}
 	};
 
 	xhr.ontimeout = function() {
 		console.log("Request time out.");
+		setTimeout(function () { initProductsVar(); }, 2000);
 	};
 
 	xhr.onerror = function() {
 		console.log("Error occurred on request.");
+		setTimeout(function () { initProductsVar(); }, 2000);
 	};
 	
 	xhr.send();	
