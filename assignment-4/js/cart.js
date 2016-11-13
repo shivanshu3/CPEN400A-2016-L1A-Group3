@@ -49,7 +49,7 @@ function initProductsVar() {
 				var result = JSON.parse(xhr.responseText);
 
 				//populating the products Object with each product, its price and quantity
-				for(var item in result){
+				for(var item in result) {
 					tempProducts[item] = {
 						'price' : result[item].price,
 						'quantity' : result[item].quantity,
