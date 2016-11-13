@@ -25,6 +25,7 @@ function initGlobalVars() {
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
 	window.cartModal = null;
+	window.cartItemPrices = [];
 }
 
 /**
