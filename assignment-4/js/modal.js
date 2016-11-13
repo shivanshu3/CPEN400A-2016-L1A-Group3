@@ -162,7 +162,7 @@ Modal.prototype.createContentsDiv = function() {
 
 	this.footerDiv = $('<div>');
 	this.footerDiv.css('margin-top', 20);
-	var checkoutButton = $('<button>Checkout</button>');
+	var checkoutButton = $('<button onclick="checkoutButtonClicked()">Checkout</button>');
 	checkoutButton.height(30);
 	checkoutButton.css('background-color', 'antiquewhite');
 	checkoutButton.css('border-style', 'solid');
@@ -264,4 +264,11 @@ Modal.prototype.updateSubtotal = function() {
 
 	var subtotalSpan = this.footerDiv.find('.subtotal_span');
 	subtotalSpan.text(subtotal);
+};
+
+/**
+ * This function runs when checkout button is clicked.
+ */
+function checkoutButtonClicked() {
+	console.log("Confirming final prices and product availabilities. One moment...");
 };
