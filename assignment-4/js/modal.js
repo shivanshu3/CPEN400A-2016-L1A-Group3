@@ -287,7 +287,6 @@ function checkoutButtonClicked() {
 	
 	xhr.onload = function() {
 		if(xhr.status == 200) {
-			tempProducts = {};
 			console.log("Request successful, status 200.");
 
 			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
