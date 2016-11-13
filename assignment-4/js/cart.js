@@ -18,6 +18,9 @@ function initGlobalVars() {
 		"images/PC3_$300.png",
 		"images/Tent_$100.png"
 	];
+	//Global tempProducts is used to ensure we don't get undefined products var
+	//when timeout/error status results in new call of initProductsVar()
+	window.tempProducts = {}; //
 	window.products = initProductsVar();
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
@@ -47,7 +50,7 @@ function initProductsVar() {
 
 				//populating the products Object with each product, its price and quantity
 				for(var item in result){
-					products[item] = {
+					tempProducts[item] = {
 						'price' : result[item].price,
 						'quantity' : result[item].quantity,
 					};
@@ -70,6 +73,7 @@ function initProductsVar() {
 	};
 	
 	xhr.send();	
+	products = tempProducts;
 	return products;
 }
 
