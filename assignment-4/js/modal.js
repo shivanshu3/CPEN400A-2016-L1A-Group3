@@ -292,10 +292,10 @@ function checkoutButtonClicked() {
 					};
 				}
 			}
-		} else {
+		} /*else {
 			console.log("Received error code. Status " + xhr.status + ". Trying new AJAX call");
 			setTimeout(function() { checkoutButtonClicked(); }, 2000);
-		}
+		}*/
 	};
 	
 	xhr.send();
@@ -315,5 +315,13 @@ function checkoutButtonClicked() {
 		console.log("No price changes to worry about.");
 	} else {
 		console.log(userAlertPriceChanges);
+	}
+
+	for(var item in cart) {
+		if(cart[item] > updatedProducts[item].quantity) {
+			console.log(item + " quantity in your cart is updating from " + cart[item] + " to " + 
+						updatedProducts[item].quantity + " due to stock shortages.");
+			cart[item] = updatedProducts[item].quantity;
+		}
 	}
 };
