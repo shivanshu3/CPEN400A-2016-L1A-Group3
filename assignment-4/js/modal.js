@@ -279,8 +279,6 @@ function checkoutButtonClicked() {
 	
 	xhr.onload = function() {
 		if(xhr.status == 200) {
-			console.log("Request successful, status 200.");
-
 			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
 				var result = JSON.parse(xhr.responseText);
 
@@ -292,17 +290,14 @@ function checkoutButtonClicked() {
 					};
 				}
 			}
-		} /*else {
-			console.log("Received error code. Status " + xhr.status + ". Trying new AJAX call");
-			setTimeout(function() { checkoutButtonClicked(); }, 2000);
-		}*/
+		}
 	};
 	
 	xhr.send();
 	updatedProducts = tempProducts;
 
-	//check new product prices and compare to existing ones from currentPrices array. 
-	//return alert to user accordingly, letting them know status of item price changes.
+	//Check new product prices and compare to existing ones from currentPrices array. 
+	//Return alert to user accordingly, letting them know status of item price changes.
 	var userAlertPriceChanges = "";
 	for(var j=0; j<Object.keys(cart).length; j++) {
 		if(updatedProducts[Object.keys(cart)[j]].price != cartItemPrices[j]) {
@@ -311,12 +306,15 @@ function checkoutButtonClicked() {
 		}
 	}
 
+	//Alert the user of whether any price changes occurred for their items.
 	if(userAlertPriceChanges.length < 1) {
 		console.log("No price changes to worry about.");
 	} else {
 		console.log(userAlertPriceChanges);
 	}
 
+	//Update cart variable item quantities if server returns lower quantity than what the item has
+	//in cart currently. Alert the user of any changes.
 	for(var item in cart) {
 		if(cart[item] > updatedProducts[item].quantity) {
 			console.log(item + " quantity in your cart is updating from " + cart[item] + " to " + 
