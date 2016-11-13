@@ -36,9 +36,12 @@ function initProductsVar() {
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
+	xhr.timeout = 2000; //2000 ms
 	
 	xhr.onload = function() {
 		if(xhr.status == 200) {
+			console.log("Request successfull, status 200.");
+
 			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
 				var result = JSON.parse(xhr.responseText);
 
@@ -51,7 +54,15 @@ function initProductsVar() {
 				}
 			}
 		}
-	}
+	};
+
+	xhr.ontimeout = function() {
+		console.log("Request time out.");
+	};
+
+	xhr.onerror = function() {
+		console.log("Error occurred on request.");
+	};
 	
 	xhr.send();	
 	return products;
