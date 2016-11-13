@@ -55,18 +55,18 @@ function initProductsVar() {
 			}
 		} else {
 			console.log("Received error code. Status " + xhr.status + ". Trying new AJAX call");
-			setTimeout(function () { initProductsVar(); }, 2000);
+			setTimeout(function() { initProductsVar(); }, 2000);
 		}
 	};
 
 	xhr.ontimeout = function() {
 		console.log("Request timeout occurred. Trying new AJAX call.");
-		setTimeout(function () { initProductsVar(); }, 2000);
+		setTimeout(function() { initProductsVar(); }, 2000);
 	};
 
 	xhr.onerror = function() {
 		console.log("Error occurred on request: " + xhr.status + " Trying new AJAX call.");
-		setTimeout(function () { initProductsVar(); }, 2000);
+		setTimeout(function() { initProductsVar(); }, 2000);
 	};
 	
 	xhr.send();	
