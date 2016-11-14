@@ -3,21 +3,6 @@
  */
 function initGlobalVars() {
 	window.cart = {};
-	// These are the paths of product images
-	window.productsPrices = [
-		"images/Box1_$10.png",
-		"images/Box2_$5.png",
-		"images/Clothes1_$20.png",
-		"images/Clothes2_$30.png",
-		"images/Jeans_$50.png",
-		"images/Keyboard_$20.png",
-		"images/KeyboardCombo_$40.png",
-		"images/Mice_$20.png",
-		"images/PC1_$350.png",
-		"images/PC2_$400.png",
-		"images/PC3_$300.png",
-		"images/Tent_$100.png"
-	];
 	// This var gets initialized later on during initPage using AJAX
 	window.products = {};
 	window.inactiveTime = 0;
@@ -66,45 +51,6 @@ function initProductsVar(callback) {
 }
 
 /**
- * Given an image path like "images/Box1_$10.png", it returns the product
- * name.
- */
-function productNameFromImagePath(imagePath) {
-	// This is the full filename, ex:
-	// "Box1_$10.png"
-	var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
-
-	// This is the filename without the extension, ex:
-	// "Box1_$10"
-	imageFileName = imageFileName.split('.')[0];
-
-	// This is the product name, ex:
-	// "Box1"
-	var productName = imageFileName.split('_')[0];
-
-	return productName;
-}
-
-/**
- * Given an image path like "images/Box1_$10.png", it returns the product
- * price.
- */
-function productPriceFromImagePath(imagePath) {
-	// This is the full filename, ex:
-	// "Box1_$10.png"
-	var imageFileName = imagePath.match(/[\w\$]+\.\w+/)[0];
-
-	// This is the filename without the extension, ex:
-	// "Box1_$10"
-	imageFileName = imageFileName.split('.')[0];
-
-	// This is the price of the product, ex: 10
-	var productPrice = Number(imageFileName.split('_')[1].substring(1));
-
-	return productPrice;
-}
-
-/**
  * Enhances the DOM and initializes the inactive timer.
  */
 function initPage() {
@@ -134,22 +80,18 @@ function initPage() {
 function initProducts() {
 	var productListDiv = $('#productList');
 
-	for (var i = 0; i < productsPrices.length; i++) {
+	for (var productName in products) {
 		// This is a div with the class 'product':
 		var productDiv = $('<div>');
 		productDiv.addClass('product');
 
 		// This is the path of the image, ex:
 		// "images/Box1_$10.png"
-		var imagePath = productsPrices[i];
-
-		// This is the product name, ex:
-		// "Box1"
-		var productName = productNameFromImagePath(imagePath);
+		var imagePath = products[productName].url;
 
 		// This is the price of the product with the dollar sign, ex:
 		// "$10"
-		var productPrice = '$' + productPriceFromImagePath(imagePath);
+		var productPrice = '$' + products[productName].price;
 
 		// Add IDs to the product divs for easy retrieval later on:
 		productDiv.attr('id', 'product_' + productName);
