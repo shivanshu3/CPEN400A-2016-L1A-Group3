@@ -146,6 +146,7 @@ Modal.prototype.createCloseButton = function() {
  * and a subtotal amount div.
  */
 Modal.prototype.createContentsDiv = function() {
+	var _this = this;
 	var contentsDiv = $('<div>');
 
 	var heading = $('<h1>');
@@ -162,11 +163,14 @@ Modal.prototype.createContentsDiv = function() {
 
 	this.footerDiv = $('<div>');
 	this.footerDiv.css('margin-top', 20);
-	var checkoutButton = $('<button onclick="checkoutButtonClicked()">Checkout</button>');
+	var checkoutButton = $('<button>Checkout</button>');
 	checkoutButton.height(30);
 	checkoutButton.css('background-color', 'antiquewhite');
 	checkoutButton.css('border-style', 'solid');
 	checkoutButton.css('outline', 'none');
+	checkoutButton.click(function() {
+		_this.checkoutButtonClicked();
+	});
 	var subtotalDiv = $('<div><b>Subtotal:</b> $<span class="subtotal_span">-</span></div>');
 	subtotalDiv.css('float', 'right');
 	this.footerDiv.append(checkoutButton);
@@ -206,7 +210,6 @@ Modal.prototype.refreshView = function() {
 	for (var item in cart) {
 		var row = $('<tr>');
 		var totalCost = cart[item] * products[item].price;
-		cartItemPrices.push(products[item].price);
 		row.append('<td class="item_name">' + item + '</td>');
 		row.append('<td class="item_quantity">' + cart[item] + '</td>');
 		row.append('<td class="item_unit_cost">$' + products[item].price + '</td>');
@@ -268,35 +271,48 @@ Modal.prototype.updateSubtotal = function() {
 };
 
 /**
- * This function runs when checkout button is clicked.
+ * This method runs when checkout button is clicked.
  */
-function checkoutButtonClicked() {
+Modal.prototype.checkoutButtonClicked = function() {
 	console.log("Confirming final prices and product availabilities. One moment...");
-	var updatedProducts = {};
 
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
-	
-	xhr.onload = function() {
-		if(xhr.status == 200) {
-			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
-				var result = JSON.parse(xhr.responseText);
+	var _this = this;
 
-				//populating the products Object with each product, its price and quantity
-				for(var item in result) {
-					tempProducts[item] = {
-						'price' : result[item].price,
-						'quantity' : result[item].quantity,
-					};
-				}
+	initProductsVar(function(updatedProducts) {
+		// Record changes in product prices/quantities:
+		for (var productName in cart) {
+			var oldProduct = products[productName];
+			var updatedProduct = updatedProducts[productName];
+
+			// Product quantity checks:
+			if (updatedProduct.quantity < cart[productName]) {
+			}
+
+			// Product price checks:
+			if (updatedProduct.price != oldProduct.price) {
 			}
 		}
-	};
-	
-	xhr.send();
-	updatedProducts = tempProducts;
 
-	//Check new product prices and compare to existing ones from currentPrices array. 
+		// Update the cart:
+		var oldCart = window.cart;
+		window.cart = {};
+		window.products = updatedProducts;
+		window.cartTotal = 0;
+		updateCartTotal(window.cartTotal);
+		for (var productName in oldCart) {
+			var quantity = oldCart[productName];
+
+			for (var i = 0; i < quantity; i++) {
+				addToCart(productName, false);
+			}
+		}
+
+		_this.refreshView();
+	});
+
+	return;
+
+	//Check new product prices and compare to existing ones from currentPrices array.
 	//Return alert to user accordingly, letting them know status of item price changes.
 	var userAlertPriceChanges = "";
 	for(var j=0; j<Object.keys(cart).length; j++) {
@@ -318,7 +334,7 @@ function checkoutButtonClicked() {
 	//in cart currently. Alert the user of any changes.
 	for(var item in cart) {
 		if(cart[item] > updatedProducts[item].quantity) {
-			console.log(item + " quantity in your cart is updating from " + cart[item] + " to " + 
+			console.log(item + " quantity in your cart is updating from " + cart[item] + " to " +
 						updatedProducts[item].quantity + " due to stock shortages.");
 			cart[item] = updatedProducts[item].quantity;
 		}

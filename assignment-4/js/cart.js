@@ -8,7 +8,6 @@ function initGlobalVars() {
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
 	window.cartModal = null;
-	window.cartItemPrices = [];
 }
 
 /**
@@ -184,13 +183,16 @@ function displayInactiveTime(time) {
  * If we run out of this product, then that product is not added to the cart.
  * Returns true if the op is successful, false otherwise.
  */
-function addToCart(productName) {
+function addToCart(productName, showAlert) {
+	showAlert = (showAlert == undefined) ? true : showAlert;
 	inactiveTime = 0;
 
 	var itemQuantity = products[productName].quantity;
 
 	if(itemQuantity === 0) {
-		alert(productName + " is no longer in stock.");
+		if (showAlert) {
+			alert(productName + " is no longer in stock.");
+		}
 		return false;
 	}
 
@@ -207,7 +209,9 @@ function addToCart(productName) {
 
 	cartTotal += products[productName].price;
 	updateCartTotal(cartTotal);
-	alert(productName + " was added to your cart.");
+	if (showAlert) {
+		alert(productName + " was added to your cart.");
+	}
 	return true;
 }
 
