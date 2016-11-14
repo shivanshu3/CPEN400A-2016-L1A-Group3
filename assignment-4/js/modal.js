@@ -303,6 +303,7 @@ function checkoutButtonClicked() {
 		if(updatedProducts[Object.keys(cart)[j]].price != cartItemPrices[j]) {
 			userAlertPriceChanges += "Price of " + Object.keys(cart)[j] + " has changed from ";
 			userAlertPriceChanges += cartItemPrices[j] + " to " + updatedProducts[Object.keys(cart)[j]].price + "\n";
+			cartItemPrices[j] = updatedProducts[Object.keys(cart)[j]].price;
 		}
 	}
 
