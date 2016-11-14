@@ -309,6 +309,7 @@ Modal.prototype.checkoutButtonClicked = function() {
 		window.products = updatedProducts;
 		window.cartTotal = 0;
 		updateCartTotal(window.cartTotal);
+		updateProductPriceLabels();
 		for (var productName in oldCart) {
 			var quantity = oldCart[productName];
 
