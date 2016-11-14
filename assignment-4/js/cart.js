@@ -210,7 +210,7 @@ function addToCart(productName, showAlert) {
 	cartTotal += products[productName].price;
 	updateCartTotal(cartTotal);
 	if (showAlert) {
-		alert(productName + " was added to your cart.");
+		//alert(productName + " was added to your cart.");
 	}
 	return true;
 }
@@ -240,7 +240,7 @@ function removeFromCart(productName) {
 
 		cartTotal -= products[productName].price;
 		updateCartTotal(cartTotal);
-		alert(productName + " was removed from your cart.");
+		//alert(productName + " was removed from your cart.");
 		return true;
 	}
 }
