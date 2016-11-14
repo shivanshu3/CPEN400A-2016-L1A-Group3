@@ -113,6 +113,7 @@ function initPage() {
 	// Initialization functions:
 	setInterval(inactiveTimeTracking, 1000);
 	initProductsVar(function(products) {
+		window.products = products;
 		initProducts();
 	});
 
