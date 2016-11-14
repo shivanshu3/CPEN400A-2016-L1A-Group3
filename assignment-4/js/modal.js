@@ -279,6 +279,8 @@ Modal.prototype.checkoutButtonClicked = function() {
 	var _this = this;
 
 	initProductsVar(function(updatedProducts) {
+		var productUpdatesText = '';
+
 		// Record changes in product prices/quantities:
 		for (var productName in cart) {
 			var oldProduct = products[productName];
@@ -286,14 +288,20 @@ Modal.prototype.checkoutButtonClicked = function() {
 
 			// Product quantity checks:
 			if (updatedProduct.quantity < cart[productName]) {
+				productUpdatesText += productName + ' quantity will be reduced to ' +
+					updatedProduct.quantity + ' due to limited stock.\n';
 			}
 
 			// Product price checks:
 			if (updatedProduct.price != oldProduct.price) {
+				productUpdatesText += productName + ' price will be changed to $' +
+					updatedProduct.price + '\n';
 			}
 		}
 
-		// Update the cart:
+		alert(productUpdatesText);
+
+		// Update the cart and the rest of the program state:
 		var oldCart = window.cart;
 		window.cart = {};
 		window.products = updatedProducts;
@@ -309,34 +317,4 @@ Modal.prototype.checkoutButtonClicked = function() {
 
 		_this.refreshView();
 	});
-
-	return;
-
-	//Check new product prices and compare to existing ones from currentPrices array.
-	//Return alert to user accordingly, letting them know status of item price changes.
-	var userAlertPriceChanges = "";
-	for(var j=0; j<Object.keys(cart).length; j++) {
-		if(updatedProducts[Object.keys(cart)[j]].price != cartItemPrices[j]) {
-			userAlertPriceChanges += "Price of " + Object.keys(cart)[j] + " has changed from ";
-			userAlertPriceChanges += cartItemPrices[j] + " to " + updatedProducts[Object.keys(cart)[j]].price + "\n";
-			cartItemPrices[j] = updatedProducts[Object.keys(cart)[j]].price;
-		}
-	}
-
-	//Alert the user of whether any price changes occurred for their items.
-	if(userAlertPriceChanges.length < 1) {
-		console.log("No price changes to worry about.");
-	} else {
-		console.log(userAlertPriceChanges);
-	}
-
-	//Update cart variable item quantities if server returns lower quantity than what the item has
-	//in cart currently. Alert the user of any changes.
-	for(var item in cart) {
-		if(cart[item] > updatedProducts[item].quantity) {
-			console.log(item + " quantity in your cart is updating from " + cart[item] + " to " +
-						updatedProducts[item].quantity + " due to stock shortages.");
-			cart[item] = updatedProducts[item].quantity;
-		}
-	}
 };
