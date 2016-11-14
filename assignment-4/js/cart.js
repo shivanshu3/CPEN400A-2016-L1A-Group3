@@ -38,16 +38,16 @@ function initGlobalVars() {
 function initProductsVar() {
 	var products = {};
 
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "https://cpen400a.herokuapp.com/products");
-	xhr.timeout = 2000; //2000 ms
-	
-	xhr.onload = function() {
-		if(xhr.status == 200) {
+	var productListXhr = new XMLHttpRequest();
+	productListXhr.open("GET", "https://cpen400a.herokuapp.com/products");
+	productListXhr.timeout = 2000; //2000 ms
+
+	productListXhr.onload = function() {
+		if(productListXhr.status == 200) {
 			console.log("Request successful, status 200.");
 
-			if (xhr.getResponseHeader('Content-Type').includes('application/json')) {
-				var result = JSON.parse(xhr.responseText);
+			if (productListXhr.getResponseHeader('Content-Type').includes('application/json')) {
+				var result = JSON.parse(productListXhr.responseText);
 
 				//populating the products Object with each product, its price and quantity
 				for(var item in result) {
@@ -58,22 +58,22 @@ function initProductsVar() {
 				}
 			}
 		} else {
-			console.log("Received error code. Status " + xhr.status + ". Trying new AJAX call");
+			console.log("Received error code. Status " + productListXhr.status + ". Trying new AJAX call");
 			setTimeout(function() { initProductsVar(); }, 2000);
 		}
 	};
 
-	xhr.ontimeout = function() {
+	productListXhr.ontimeout = function() {
 		console.log("Request timeout occurred. Trying new AJAX call.");
 		setTimeout(function() { initProductsVar(); }, 2000);
 	};
 
-	xhr.onerror = function() {
-		console.log("Error occurred on request: " + xhr.status + " Trying new AJAX call.");
+	productListXhr.onerror = function() {
+		console.log("Error occurred on request: " + productListXhr.status + " Trying new AJAX call.");
 		setTimeout(function() { initProductsVar(); }, 2000);
 	};
-	
-	xhr.send();	
+
+	productListXhr.send();
 	products = tempProducts;
 	return products;
 }
