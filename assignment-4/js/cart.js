@@ -151,6 +151,17 @@ function initProducts() {
 }
 
 /**
+ * Updates the product price labels on the images in the home page.
+ */
+function updateProductPriceLabels() {
+	$('.product').each(function() {
+		var productName = $(this).attr('id').split('_')[1];
+		var priceDiv = $(this).find('.price');
+		priceDiv.text('$' + products[productName].price);
+	});
+}
+
+/**
  * This function is called every second. It is used to keep track of how
  * long the user was inactive for.
  */
