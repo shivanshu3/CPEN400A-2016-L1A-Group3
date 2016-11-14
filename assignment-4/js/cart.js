@@ -18,10 +18,8 @@ function initGlobalVars() {
 		"images/PC3_$300.png",
 		"images/Tent_$100.png"
 	];
-	//Global tempProducts is used to ensure we don't get undefined products var
-	//when timeout/error status results in new call of initProductsVar()
-	window.tempProducts = {}; //
-	window.products = initProductsVar();
+	// This var gets initialized later on during initPage using AJAX
+	window.products = {};
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
 	window.cartModal = null;
@@ -35,9 +33,7 @@ function initGlobalVars() {
  * Returns a list of objects comprising the products along with their prices and quantities,
  * which can be assigned to the global variable 'products'
  */
-function initProductsVar() {
-	var products = {};
-
+function initProductsVar(callback) {
 	var productListXhr = new XMLHttpRequest();
 	productListXhr.open("GET", "https://cpen400a.herokuapp.com/products");
 	productListXhr.timeout = 2000; //2000 ms
@@ -47,35 +43,26 @@ function initProductsVar() {
 			console.log("Request successful, status 200.");
 
 			if (productListXhr.getResponseHeader('Content-Type').includes('application/json')) {
-				var result = JSON.parse(productListXhr.responseText);
-
-				//populating the products Object with each product, its price and quantity
-				for(var item in result) {
-					tempProducts[item] = {
-						'price' : result[item].price,
-						'quantity' : result[item].quantity,
-					};
-				}
+				var products = JSON.parse(productListXhr.responseText);
+				return callback(products);
 			}
 		} else {
 			console.log("Received error code. Status " + productListXhr.status + ". Trying new AJAX call");
-			setTimeout(function() { initProductsVar(); }, 2000);
+			return initProductsVar(callback);
 		}
 	};
 
 	productListXhr.ontimeout = function() {
 		console.log("Request timeout occurred. Trying new AJAX call.");
-		setTimeout(function() { initProductsVar(); }, 2000);
+		return initProductsVar(callback);
 	};
 
 	productListXhr.onerror = function() {
 		console.log("Error occurred on request: " + productListXhr.status + " Trying new AJAX call.");
-		setTimeout(function() { initProductsVar(); }, 2000);
+		return initProductsVar(callback);
 	};
 
 	productListXhr.send();
-	products = tempProducts;
-	return products;
 }
 
 /**
@@ -125,7 +112,9 @@ function initPage() {
 
 	// Initialization functions:
 	setInterval(inactiveTimeTracking, 1000);
-	initProducts();
+	initProductsVar(function(products) {
+		initProducts();
+	});
 
 	// Cart button click handler:
 	window.cartModal = new Modal(700);
