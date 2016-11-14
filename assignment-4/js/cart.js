@@ -11,11 +11,10 @@ function initGlobalVars() {
 }
 
 /**
- * Initializes the products global hashmap which is a map of <ProductName> to
+ * Gets the products hashmap which is a map of <ProductName> to
  * <ProductPrice> and <ProductQuantity>
  * It fulfills this by making an AJAX call to the url https://cpen400a.herokuapp.com/products
- * Returns a list of objects comprising the products along with their prices and quantities,
- * which can be assigned to the global variable 'products'
+ * The map is passed to the callback function when it is ready.
  */
 function initProductsVar(callback) {
 	var productListXhr = new XMLHttpRequest();

@@ -272,6 +272,8 @@ Modal.prototype.updateSubtotal = function() {
 
 /**
  * This method runs when checkout button is clicked.
+ * It synchronizes the local products state with the server by downloading
+ * the products object.
  */
 Modal.prototype.checkoutButtonClicked = function() {
 	console.log("Confirming final prices and product availabilities. One moment...");
