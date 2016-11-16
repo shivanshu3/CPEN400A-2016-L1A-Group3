@@ -1,4 +1,25 @@
 /**
+ * ENTRY POINTS:
+ *
+ * This file has 2 entry points:
+ *		- initGlobalVars
+ *			This one runs when this script is loaded. That is, we don't wait for
+ *			the DOM to load in order to execute this function. It doesn't do much.
+ *			Just initializes some global variables to some constant values.
+ *			The reason why we execute this function before the DOM is ready is
+ *			to make sure that the test scripts can see that the global variables
+ *			exist, and so they don't crash when they are run.
+ *
+ *		- initPage
+ *			This one runs after the DOM is done loading. It does most of the work
+ *			of app initialization. It downloads the products from the Heroku app
+ *			using AJAX. Then it constructs the product divs from that data and
+ *			places these divs in the DOM, making them visible to the user.
+ *			It also sets up the inactive time tracker, and the cart button click
+ *			event listener.
+ */
+
+/**
  * Sets up and initializes the global variables used in this app.
  */
 function initGlobalVars() {
