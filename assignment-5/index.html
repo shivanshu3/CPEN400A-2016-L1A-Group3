@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Assignment-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/cart.js"></script>
+	<script src="js/modal.js"></script>
+	<script>
+		initGlobalVars();
+		$(initPage);
+	</script>
+</head>
+<body>
+	<div id="header">
+		<div id="logo">
+			<img src="images/store_logo.png">
+		</div>
+		<div id="welcomeBanner">
+			<img src="images/ubc_header.gif">
+		</div>
+		<div id="cartPriceTracking">
+			<button id="cartButton">Cart ($0)</button>
+		</div>
+	</div>
+
+	<div id="mainContent">
+		<div id="navigationMenu">
+				<a>All Items</a>
+				<a>Books</a>
+				<a>Clothing</a>
+				<a>Tech</a>
+				<a>Gifts</a>
+				<a>Stationary</a>
+				<a>Supplies</a>
+		</div>
+
+		<div id="productList"></div>
+	</div>
+
+	<div id="footer">
+		Inactive time: <span id="inactive_time_span">-</span> seconds
+	</div>
+
+</body>
+</html>
