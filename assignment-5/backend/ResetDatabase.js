@@ -120,6 +120,20 @@ steps.step(function(next) {
 	});
 });
 
+// Drop the Orders collection:
+steps.step(function(next) {
+	var ordersCollection = dbDriver.getCollection('Orders');
+	ordersCollection.drop(function(err) {
+		// 26 err code is 'collection not found' which is OK
+		if ((err) && (err.code != 26)) {
+			console.log('Failed to drop the Orders collection');
+			console.log(err);
+			process.exit(1);
+		}
+		next();
+	});
+});
+
 steps.execute(function() {
 	console.log('Successfully reset the UbcBookstore.Products');
 	process.exit(0);
