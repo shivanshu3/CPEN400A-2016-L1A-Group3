@@ -51,8 +51,14 @@ app.get('/products', function(req, res) {
 
 // POST /checkout
 app.post('/checkout', function (req, res) {
-	res.send(req.body);
-	console.log('POST /checkout endpoint');
+	productsManager.addOrder(req.body.order, function(err, result) {
+		if (err) {
+			console.log(err);
+			res.status(400).send('An error occured');
+		} else {
+			res.send(result);
+		}
+	});
 });
 
 /** INITIATE THE SERVER BOOTUP SEQUENCE **/
