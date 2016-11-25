@@ -108,6 +108,13 @@ ProductsManager.prototype.decrementProductQuantity = function(productName, produ
  * }
  */
 ProductsManager.prototype.addOrder = function(order, callback) {
+	// Empty order handling:
+	if ((order == undefined) || (order.cart == undefined) || (order.cart == null)
+		|| (order.cart == {})) {
+		callback(null, {});
+		return;
+	}
+
 	var steps = new SynchSteps();
 
 	var error = null;
