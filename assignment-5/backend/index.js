@@ -6,12 +6,14 @@ var cookieParser = require('cookie-parser');
 var SynchSteps = require('synch-steps');
 var http = require('http');
 var DatabaseDriver = require('./DatabaseDriver.js');
+var ProductsManager = require('./ProductsManager.js');
 
 /** GLOBAL DATA AND APP CONFIG **/
 
 var app = express();
 var httpServer = null;
 var dbDriver = new DatabaseDriver('localhost', 27017, 'UbcBookstore');
+var productsManager = new ProductsManager(dbDriver);
 
 /** SETTING UP EXPRESS **/
 
@@ -35,8 +37,10 @@ app.use(function(req, res, next) {
 
 // GET /products
 app.get('/products', function(req, res) {
-	res.send(req.query);
-	console.log('GET /products endpoint');
+	productsManager.getAllProducts(function(err, products) {
+		var productsObject = ProductsManager.listToObject(products);
+		res.send(productsObject);
+	});
 });
 
 // POST /checkout
