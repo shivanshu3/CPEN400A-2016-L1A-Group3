@@ -29,17 +29,18 @@ function initGlobalVars() {
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
 	window.cartModal = null;
+	window.domain = 'http://192.168.0.103';
 }
 
 /**
  * Gets the products hashmap which is a map of <ProductName> to
  * <ProductPrice> and <ProductQuantity>
- * It fulfills this by making an AJAX call to the url https://cpen400a.herokuapp.com/products
+ * It fulfills this by making an AJAX call to the /products endpoint
  * The map is passed to the callback function when it is ready.
  */
 function initProductsVar(callback) {
 	var productListXhr = new XMLHttpRequest();
-	productListXhr.open("GET", "https://cpen400a.herokuapp.com/products");
+	productListXhr.open("GET", domain + ":3000/products");
 	productListXhr.timeout = 2000; //2000 ms
 
 	productListXhr.onload = function() {

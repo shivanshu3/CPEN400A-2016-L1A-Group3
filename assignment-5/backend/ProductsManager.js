@@ -4,6 +4,9 @@
  * - Decrement the quantity of a given product
  */
 
+// Required modules:
+var SynchSteps = require('synch-steps');
+
 /**
  * The constructor
  */
@@ -112,7 +115,7 @@ ProductsManager.prototype.addOrder = function(order, callback) {
 
 	// Add to Orders collection:
 	steps.step(function(next, stop) {
-		var ordersCollection = this.dbDriver.getCollection('Orders');
+		var ordersCollection = _this.dbDriver.getCollection('Orders');
 		ordersCollection.insert(order, function(err, result) {
 			if (err) {
 				error = err;
