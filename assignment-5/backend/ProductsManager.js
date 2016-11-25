@@ -74,6 +74,23 @@ ProductsManager.listToObject = function(products) {
 };
 
 /**
+ * It decrements the quantity field of the product with the given product name.
+ * Callback is called when the operation is complete.
+ */
+ProductsManager.prototype.decrementProductQuantity = function(productName, productQuantity, callback) {
+	var productsCollection = this.dbDriver.getCollection('Products');
+	productsCollection.update({
+		name: productName
+	}, {
+		$inc: {
+			quantity: -productQuantity
+		}
+	}, function(err, result) {
+		callback(err, result);
+	});
+};
+
+/**
  * Adds the given order to the Orders collection.
  * Also updates the corresponding product documents.
  *
