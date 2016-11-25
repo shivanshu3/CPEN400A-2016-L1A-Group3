@@ -135,6 +135,7 @@ steps.step(function(next) {
 });
 
 steps.execute(function() {
-	console.log('Successfully reset the UbcBookstore.Products');
+	console.log('Successfully reset UbcBookstore.Products');
+	console.log('Successfully reset UbcBookstore.Orders');
 	process.exit(0);
 });

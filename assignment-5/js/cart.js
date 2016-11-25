@@ -29,7 +29,7 @@ function initGlobalVars() {
 	window.inactiveTime = 0;
 	window.cartTotal = 0;
 	window.cartModal = null;
-	window.domain = 'http://192.168.0.103';
+	window.domain = 'http://192.168.0.103:3000';
 }
 
 /**
@@ -40,7 +40,7 @@ function initGlobalVars() {
  */
 function initProductsVar(callback) {
 	var productListXhr = new XMLHttpRequest();
-	productListXhr.open("GET", domain + ":3000/products");
+	productListXhr.open("GET", domain + "/products");
 	productListXhr.timeout = 2000; //2000 ms
 
 	productListXhr.onload = function() {

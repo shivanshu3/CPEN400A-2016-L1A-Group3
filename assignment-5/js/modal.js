@@ -301,7 +301,10 @@ Modal.prototype.checkoutButtonClicked = function() {
 			}
 		}
 
-		alert(productUpdatesText);
+		// Show the cart changes alert only if there are any changes:
+		if (productUpdatesText.trim() != '') {
+			alert(productUpdatesText);
+		}
 
 		// Update the cart and the rest of the program state:
 		var oldCart = window.cart;
@@ -321,7 +324,7 @@ Modal.prototype.checkoutButtonClicked = function() {
 		_this.refreshView();
 
 		// Final checkout request to the /checkout endpoint:
-		var checkoutRequest = $.post(domain + ':3000/checkout', {
+		var checkoutRequest = $.post(domain + '/checkout', {
 			order: {
 				cart: window.cart,
 				total: window.cartTotal
