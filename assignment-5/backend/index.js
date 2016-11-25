@@ -38,8 +38,12 @@ app.use(function(req, res, next) {
 // GET /products
 app.get('/products', function(req, res) {
 	productsManager.getAllProducts(function(err, products) {
-		var productsObject = ProductsManager.listToObject(products);
-		res.send(productsObject);
+		if (err) {
+			res.status(400).send('An error occured');
+		} else {
+			var productsObject = ProductsManager.listToObject(products);
+			res.send(productsObject);
+		}
 	});
 });
 
