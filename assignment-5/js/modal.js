@@ -319,5 +319,18 @@ Modal.prototype.checkoutButtonClicked = function() {
 		}
 
 		_this.refreshView();
+
+		// Final checkout request to the /checkout endpoint:
+		var checkoutRequest = $.post('http://localhost:3000/checkout', {
+			cart: window.cart,
+			total: window.cartTotal
+		});
+		checkoutRequest.done(function(result) {
+			alert('Checkout successful: ' + result);
+		});
+		checkoutRequest.fail(function(err) {
+			console.log(err);
+			alert('/checkout error');
+		});
 	});
 };
