@@ -25,24 +25,24 @@ app.use(multer());
 app.use(cookieParser());
 // Enable cross origin requests:
 app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header("Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept");
-   next();
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept");
+	next();
 });
 
 /** API ENDPOINTS **/
 
 // GET /products
 app.get('/products', function(req, res) {
-   res.send(req.query);
-   console.log('GET /products endpoint');
+	res.send(req.query);
+	console.log('GET /products endpoint');
 });
 
 // POST /checkout
 app.post('/checkout', function (req, res) {
-   res.send(req.body);
-   console.log('POST /checkout endpoint');
+	res.send(req.body);
+	console.log('POST /checkout endpoint');
 });
 
 /** INITIATE THE SERVER BOOTUP SEQUENCE **/
@@ -51,22 +51,22 @@ var serverInitSteps = new SynchSteps();
 
 // Connect to the database first:
 serverInitSteps.step(function(next) {
-   dbDriver.connect(function(err) {
-      if (err) {
-         console.log('Failed to connect to the database.');
-         process.exit(1);
-      }
-      next();
-   });
+	dbDriver.connect(function(err) {
+		if (err) {
+			console.log('Failed to connect to the database.');
+			process.exit(1);
+		}
+		next();
+	});
 });
 
 // Start the httpServer:
 serverInitSteps.step(function(next) {
-   httpServer = http.createServer(app);
-   httpServer.listen(3000, function() {
-      console.log('Listening now...');
-      next();
-   });
+	httpServer = http.createServer(app);
+	httpServer.listen(3000, function() {
+		console.log('Listening now...');
+		next();
+	});
 });
 
 serverInitSteps.execute();
