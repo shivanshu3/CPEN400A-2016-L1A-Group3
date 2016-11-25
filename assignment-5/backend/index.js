@@ -3,8 +3,15 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var cookieParser = require('cookie-parser');
+var SynchSteps = require('synch-steps');
+var http = require('http');
+var DatabaseDriver = require('./DatabaseDriver.js');
+
+/** GLOBAL DATA AND APP CONFIG **/
 
 var app = express();
+var httpServer = null;
+var dbDriver = new DatabaseDriver('localhost', 27017, 'UbcBookstore');
 
 /** SETTING UP EXPRESS **/
 
@@ -66,12 +73,11 @@ serverInitSteps.step(function(next) {
    });
 });
 
-// Start the httpsServer:
+// Start the httpServer:
 serverInitSteps.step(function(next) {
-   httpsServer = https.createServer(sslOptions, app);
-   httpsServer.listen(3000, function() {
+   httpServer = http.createServer(app);
+   httpServer.listen(3000, function() {
       console.log('Listening now...');
-      rootDowngrade.rootStepComplete();
       next();
    });
 });
