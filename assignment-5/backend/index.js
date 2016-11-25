@@ -37,8 +37,10 @@ app.use(function(req, res, next) {
 
 // GET /products
 app.get('/products', function(req, res) {
-	productsManager.getAllProducts(function(err, products) {
+	productsManager.getAllProducts(req.query.minPrice, req.query.maxPrice,
+		function(err, products) {
 		if (err) {
+			console.log(err);
 			res.status(400).send('An error occured');
 		} else {
 			var productsObject = ProductsManager.listToObject(products);

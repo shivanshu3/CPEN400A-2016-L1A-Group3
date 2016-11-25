@@ -14,12 +14,34 @@ var ProductsManager = function(dbDriver) {
 
 /**
  * Returns a list of all products
+ * If minPrice and maxPrice are not undefined, then they will be
+ * used as price filters. These are inclusive.
  * Calls the given callback when its ready
  * First argument is err if any, the second argument is the list of products.
  */
-ProductsManager.prototype.getAllProducts = function(callback) {
+ProductsManager.prototype.getAllProducts = function(minPrice, maxPrice, callback) {
+	var filter = {};
+	if ((minPrice != undefined) || (maxPrice != undefined)) {
+		filter.price = {};
+	}
+	if (minPrice != undefined) {
+		minPrice = Number(minPrice);
+		if (isNaN(minPrice)) {
+			callback(new Error('Illegal Input minPrice'), null);
+			return;
+		}
+		filter.price.$gte = minPrice;
+	}
+	if (maxPrice != undefined) {
+		maxPrice = Number(maxPrice);
+		if (isNaN(maxPrice)) {
+			callback(new Error('Illegal Input maxPrice'), null);
+			return;
+		}
+		filter.price.$lte = maxPrice;
+	}
 	var productsCollection = this.dbDriver.getCollection('Products');
-	productsCollection.find({}).toArray(function(err, products) {
+	productsCollection.find(filter).toArray(function(err, products) {
 		callback(err, products);
 	});
 };
