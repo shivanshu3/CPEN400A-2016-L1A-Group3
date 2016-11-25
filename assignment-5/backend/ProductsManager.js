@@ -73,4 +73,65 @@ ProductsManager.listToObject = function(products) {
 	return productsObject;
 };
 
+/**
+ * Adds the given order to the Orders collection.
+ * Also updates the corresponding product documents.
+ *
+ * Format of an order:
+ * {
+ *		"cart": {
+ *			'productName1': 2,
+ *			'productName2': 1,
+ *			...
+ *		},
+ *		"total": 117
+ * }
+ */
+ProductsManager.prototype.addOrder = function(order, callback) {
+	var steps = new SynchSteps();
+
+	var error = null;
+	var _this = this;
+
+	// Add to Orders collection:
+	steps.step(function(next, stop) {
+		var ordersCollection = this.dbDriver.getCollection('Orders');
+		ordersCollection.insert(order, function(err, result) {
+			if (err) {
+				error = err;
+				stop();
+				return;
+			}
+			next();
+		});
+	});
+
+	// Decrement items from corresponding products:
+	steps.step(function(next, stop) {
+		var decrementProductQuantity = function(index) {
+			var productNames = Object.keys(order.cart);
+			if (index == productNames.length) {
+				next();
+				return;
+			}
+
+			var productName = productNames[index];
+			var productQuantity = order.cart[productName];
+			_this.decrementProductQuantity(productName, productQuantity, function(err) {
+				if (err) {
+					stop();
+					error = err;
+					return;
+				}
+				decrementProductQuantity(index + 1);
+			});
+		};
+		decrementProductQuantity(0);
+	});
+
+	steps.execute(function() {
+		callback(error, {});
+	});
+};
+
 module.exports = ProductsManager;
