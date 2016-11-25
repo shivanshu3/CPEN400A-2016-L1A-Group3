@@ -4,68 +4,80 @@ var DatabaseDriver = require('./DatabaseDriver.js');
 
 var dbDriver = new DatabaseDriver('localhost', 27017, 'UbcBookstore');
 
-var productsDocument = {
-	"KeyboardCombo": {
+var productsDocuments = [
+   {
+	   "name": "KeyboardCombo",
 		"price": 28,
 		"quantity": 2,
 		"url": "https://cpen400a.herokuapp.com/images/KeyboardCombo.png"
 	},
-	"Mice": {
+   {
+	   "name": "Mice",
 		"price": 5,
 		"quantity": 6,
 		"url": "https://cpen400a.herokuapp.com/images/Mice.png"
 	},
-	"PC1": {
+   {
+	   "name": "PC1",
 		"price": 329,
 		"quantity": 9,
 		"url": "https://cpen400a.herokuapp.com/images/PC1.png"
 	},
-	"PC2": {
+   {
+	   "name": "PC2",
 		"price": 366,
 		"quantity": 2,
 		"url": "https://cpen400a.herokuapp.com/images/PC2.png"
 	},
-	"PC3": {
+   {
+	   "name": "PC3",
 		"price": 354,
 		"quantity": 2,
 		"url": "https://cpen400a.herokuapp.com/images/PC3.png"
 	},
-	"Tent": {
+   {
+	   "name": "Tent",
 		"price": 40,
 		"quantity": 3,
 		"url": "https://cpen400a.herokuapp.com/images/Tent.png"
 	},
-	"Box1": {
+   {
+	   "name": "Box1",
 		"price": 5,
 		"quantity": 2,
 		"url": "https://cpen400a.herokuapp.com/images/Box1.png"
 	},
-	"Box2": {
+   {
+	   "name": "Box2",
 		"price": 5,
 		"quantity": 10,
 		"url": "https://cpen400a.herokuapp.com/images/Box2.png"
 	},
-	"Clothes1": {
+   {
+	   "name": "Clothes1",
 		"price": 20,
 		"quantity": 10,
 		"url": "https://cpen400a.herokuapp.com/images/Clothes1.png"
 	},
-	"Clothes2": {
+   {
+	   "name": "Clothes2",
 		"price": 29,
 		"quantity": 8,
 		"url": "https://cpen400a.herokuapp.com/images/Clothes2.png"
 	},
-	"Jeans": {
+   {
+	   "name": "Jeans",
 		"price": 33,
 		"quantity": 10,
 		"url": "https://cpen400a.herokuapp.com/images/Jeans.png"
 	},
-	"Keyboard": {
+   {
+	   "name": "Keyboard",
 		"price": 19,
 		"quantity": 4,
 		"url": "https://cpen400a.herokuapp.com/images/Keyboard.png"
 	}
-}
+];
 
 var steps = new SynchSteps();
 
@@ -98,7 +110,7 @@ steps.step(function(next) {
 // Add the products document predefined in this file to the Products collection:
 steps.step(function(next) {
 	var productsCollection = dbDriver.getCollection('Products');
-	productsCollection.insert(productsDocument, function(err, result) {
+	productsCollection.insert(productsDocuments, function(err, result) {
 		if (err) {
 			console.log('Failed to insert in the Products collection');
 			console.log(err);
