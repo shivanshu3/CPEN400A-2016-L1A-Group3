@@ -23,9 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 // for parsing cookies:
 app.use(cookieParser());
-
-/** API ENDPOINTS **/
-
 // Enable cross origin requests:
 app.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*");
@@ -34,28 +31,18 @@ app.use(function(req, res, next) {
    next();
 });
 
-// GET Params example:
-app.get('/paramsexample/:name', function(req, res) {
-   res.send(req.params);
-   console.log('Params Example Served');
-});
+/** API ENDPOINTS **/
 
-// GET query example:
-app.get('/getexample', function(req, res) {
+// GET /products
+app.get('/products', function(req, res) {
    res.send(req.query);
-   console.log('Get Example Served');
+   console.log('GET /products endpoint');
 });
 
-// POST query example:
-app.post('/postexample', function (req, res) {
+// POST /checkout
+app.post('/checkout', function (req, res) {
    res.send(req.body);
-   console.log('Post Example Served');
-});
-
-// GET cookie example
-app.get('/cookies', function(req, res) {
-   res.send(req.cookies);
-   console.log('Cookies Example Served');
+   console.log('POST /checkout endpoint');
 });
 
 /** INITIATE THE SERVER BOOTUP SEQUENCE **/
