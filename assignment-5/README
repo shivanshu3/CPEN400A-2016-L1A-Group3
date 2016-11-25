@@ -1,0 +1,5 @@
+Reset the database:
+npm run-script resetdb
+
+Start the app:
+npm start

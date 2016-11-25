@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "node backend/index.js",
+    "resetdb": "node backend/ResetDatabase.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
