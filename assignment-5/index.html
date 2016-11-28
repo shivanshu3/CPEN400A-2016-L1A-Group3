@@ -3,6 +3,7 @@
 <head>
 	<title>Assignment-5</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/cart.js"></script>
 	<script src="js/modal.js"></script>
@@ -41,6 +42,19 @@
 	<div id="footer">
 		Inactive time: <span id="inactive_time_span">-</span> seconds
 	</div>
+
+	<!-- Mocha stuff starts -->
+	<div id="mocha"></div>
+	<script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+	<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+	<script>mocha.setup('bdd')</script>
+	<script src="tests/test.js"></script>
+	<script>
+		mocha.checkLeaks();
+		mocha.globals(['jQuery']);
+		mocha.run();
+	</script>
+	<!-- Mocha stuff ends -->
 
 </body>
 </html>
