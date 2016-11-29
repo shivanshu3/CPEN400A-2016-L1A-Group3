@@ -61,11 +61,26 @@ describe('getAllProducts', function() {
 	it('With only max price filter', function(done) {
 		var maxPrice = 354;
 		productsManager.getAllProducts(undefined, maxPrice, function(err, products) {
-			var numExpectedProducts = 11
+			var numExpectedProducts = 11;
 			expect(err).to.equal(null);
 			expect(products.length).to.equal(numExpectedProducts);
 
 			for (var i = 0; i < numExpectedProducts; i++) {
+				expect(products[i].price).to.be.at.most(maxPrice);
+			}
+			done();
+		});
+	});
+	it('With min and max price filters', function(done) {
+		var minPrice = 40;
+		var maxPrice = 354;
+		productsManager.getAllProducts(minPrice, maxPrice, function(err, products) {
+			var numExpectedProducts = 3;
+			expect(err).to.equal(null);
+			expect(products.length).to.equal(numExpectedProducts);
+
+			for (var i = 0; i < numExpectedProducts; i++) {
+				expect(products[i].price).to.be.at.least(minPrice);
 				expect(products[i].price).to.be.at.most(maxPrice);
 			}
 			done();
