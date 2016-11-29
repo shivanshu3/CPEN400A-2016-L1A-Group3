@@ -3,3 +3,6 @@ npm run-script resetdb
 
 Start the app:
 npm start
+
+Run backend tests:
+npm test

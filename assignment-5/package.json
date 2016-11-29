@@ -14,7 +14,8 @@
   "scripts": {
     "start": "node backend/index.js",
     "resetdb": "node backend/ResetDatabase.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest":"node backend/ResetDatabase.js",
+    "test": "mocha tests/backend.js"
   },
   "repository": {
     "type": "git",
