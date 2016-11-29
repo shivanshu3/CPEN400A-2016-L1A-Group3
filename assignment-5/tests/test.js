@@ -41,10 +41,16 @@ describe('addToCart', function() {
 });
 
 describe('removeFromCart', function() {
-	it('Should remove Mice from cart', function(done) {
+	it('Should remove PC1 from cart', function(done) {
+		expect(cart.PC1).to.be(1);
+		removeFromCart('PC1');
+		expect(cart.PC1).to.be(undefined);
 		done();
 	});
-	it('Should remove KeyboardCombo from cart', function(done) {
+	it('Should remove Tent from cart', function(done) {
+		expect(cart.Tent).to.be(1);
+		removeFromCart('Tent');
+		expect(cart.Tent).to.be(undefined);
 		done();
 	});
 });
