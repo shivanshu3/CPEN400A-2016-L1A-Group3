@@ -87,3 +87,26 @@ describe('getAllProducts', function() {
 		});
 	});
 });
+
+describe('listToObject', function() {
+	it('Converts a products array to an associative array object', function(done) {
+		productsManager.getAllProducts(undefined, undefined, function(err, products) {
+			expect(err).to.equal(null);
+			expect(products.length).to.equal(12);
+
+			var productsObject = ProductsManager.listToObject(products);
+			expect(productsObject).to.be.an('object');
+
+			var productsObjectKeys = Object.keys(productsObject);
+			expect(productsObjectKeys).to.have.length(12);
+
+			var product = productsObject[productsObjectKeys[0]];
+			expect(productsObjectKeys[0]).to.equal('KeyboardCombo');
+			expect(product._id).to.be.undefined;
+			expect(product.price).to.equal(28);
+			expect(product.quantity).to.equal(2);
+			expect(product.url).to.be.a('string');
+			done();
+		});
+	});
+});
