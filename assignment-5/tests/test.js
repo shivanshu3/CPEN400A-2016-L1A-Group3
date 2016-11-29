@@ -68,5 +68,6 @@ describe('removeFromCart', function() {
 		removeFromCart('Mice');
 		expect(cart.Mice).to.be(undefined);
 		expect(products.Mice.quantity).to.be(numMiceInCart);
+		done();
 	});
 });
