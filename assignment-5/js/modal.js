@@ -331,11 +331,11 @@ Modal.prototype.checkoutButtonClicked = function() {
 			}
 		});
 		checkoutRequest.done(function(result) {
-			alert('Checkout successful: ' + result);
+			console.log('Checkout successful: ' + result);
 		});
 		checkoutRequest.fail(function(err) {
 			console.log(err);
-			alert('/checkout error');
+			console.log('/checkout error');
 		});
 	});
 };

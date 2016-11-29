@@ -196,7 +196,7 @@ function inactiveTimeTracking() {
 	displayInactiveTime(inactiveTime);
 
 	if(inactiveTime > 300) {
-		alert("Hey there! Are you still planning to buy something?");
+		console.log("Hey there! Are you still planning to buy something?");
 		inactiveTime = 0;
 	}
 
@@ -222,9 +222,6 @@ function addToCart(productName, showAlert) {
 	var itemQuantity = products[productName].quantity;
 
 	if(itemQuantity === 0) {
-		if (showAlert) {
-			alert(productName + " is no longer in stock.");
-		}
 		return false;
 	}
 
@@ -241,9 +238,6 @@ function addToCart(productName, showAlert) {
 
 	cartTotal += products[productName].price;
 	updateCartTotal(cartTotal);
-	if (showAlert) {
-		//alert(productName + " was added to your cart.");
-	}
 	return true;
 }
 
@@ -258,7 +252,6 @@ function removeFromCart(productName) {
 	var inCartQuantity = cart[productName];
 
 	if(inCartQuantity === undefined) {
-		alert(productName + " is not in your cart.");
 		return false;
 	} else {
 		if(inCartQuantity === 1) {
@@ -272,7 +265,6 @@ function removeFromCart(productName) {
 
 		cartTotal -= products[productName].price;
 		updateCartTotal(cartTotal);
-		//alert(productName + " was removed from your cart.");
 		return true;
 	}
 }
