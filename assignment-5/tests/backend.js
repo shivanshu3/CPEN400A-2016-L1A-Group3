@@ -1,11 +1,14 @@
 // Required modules:
+var chai = require('chai');
 var DatabaseDriver = require('../backend/DatabaseDriver.js');
 var ProductsManager = require('../backend/ProductsManager.js');
 var SynchSteps = require('synch-steps');
 
 // Global config:
+var expect = chai.expect;
 var dbDriver = new DatabaseDriver('localhost', 27017, 'UbcBookstore');
 var productsManager = new ProductsManager(dbDriver);
+var ObjectId = dbDriver.getObjectIdClass();
 
 var initSteps = new SynchSteps();
 
@@ -28,7 +31,18 @@ before(function(done) {
 });
 
 describe('getAllProducts', function() {
-	it('Should return a list of valid products', function(done) {
-		done();
+	it('Without price filter should return all products', function(done) {
+		productsManager.getAllProducts(undefined, undefined, function(err, products) {
+			expect(err).to.equal(null);
+			expect(products.length).to.equal(12);
+
+			var product = products[0];
+			expect(product._id).to.be.an.instanceof(ObjectId);
+			expect(product.name).to.equal('KeyboardCombo');
+			expect(product.price).to.equal(28);
+			expect(product.quantity).to.equal(2);
+			expect(product.url).to.be.a('string');
+			done();
+		});
 	});
 });

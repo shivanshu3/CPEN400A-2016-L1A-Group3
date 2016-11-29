@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.10.1",
+    "chai": "^3.5.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.10.7",
     "mongodb": "^2.2.11",
@@ -14,7 +15,7 @@
   "scripts": {
     "start": "node backend/index.js",
     "resetdb": "node backend/ResetDatabase.js",
-    "pretest":"node backend/ResetDatabase.js",
+    "pretest": "node backend/ResetDatabase.js",
     "test": "mocha tests/backend.js"
   },
   "repository": {
