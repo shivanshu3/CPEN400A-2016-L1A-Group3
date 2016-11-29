@@ -110,3 +110,46 @@ describe('listToObject', function() {
 		});
 	});
 });
+
+describe('decrementProductQuantity', function() {
+	it('Decrements the quantity by the given amount', function(done) {
+		var oldQuantity;
+
+		var steps = new SynchSteps();
+
+		// Get the original quantity of keyboards:
+		steps.step(function(next) {
+			productsManager.getAllProducts(undefined, undefined, function(err, products) {
+				var keyboard = ProductsManager.listToObject(products)['Keyboard'];
+				oldQuantity = keyboard.quantity;
+				next();
+			});
+		})
+
+		// Decrement quantity by 2:
+		.step(function(next) {
+			productsManager.decrementProductQuantity('Keyboard', 2, function() {
+				next();
+			});
+		})
+
+		// Get the new quantity of keyboards:
+		.step(function(next) {
+			productsManager.getAllProducts(undefined, undefined, function(err, products) {
+				var keyboard = ProductsManager.listToObject(products)['Keyboard'];
+				newQuantity = keyboard.quantity;
+				next();
+			});
+		})
+
+		// Compare the new and old quantities:
+		.step(function(next) {
+			expect(oldQuantity - newQuantity).to.be.equal(2);
+			next();
+		})
+
+		.execute(function() {
+			done();
+		});
+	});
+});
