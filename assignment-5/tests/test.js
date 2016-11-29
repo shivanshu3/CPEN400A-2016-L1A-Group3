@@ -53,4 +53,20 @@ describe('removeFromCart', function() {
 		expect(cart.Tent).to.be(undefined);
 		done();
 	});
+	it('Should not remove an item if it is not in cart', function(done) {
+		var miceStock = products.Mice.quantity;
+		var numMiceInCart = cart.Mice;
+		expect(miceStock).to.be(0);
+		expect(numMiceInCart).to.be.greaterThan(0);
+		for (var i = 0; i < numMiceInCart; i++) {
+			removeFromCart('Mice');
+		}
+		expect(cart.Mice).to.be(undefined);
+		expect(products.Mice.quantity).to.be(numMiceInCart);
+		// This operation shouldn't remove Mice from the cart because it doesn't
+		// exist in our cart:
+		removeFromCart('Mice');
+		expect(cart.Mice).to.be(undefined);
+		expect(products.Mice.quantity).to.be(numMiceInCart);
+	});
 });
