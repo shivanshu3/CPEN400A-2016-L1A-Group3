@@ -4,10 +4,13 @@
   "description": "UBC Bookstore for CPEN400a",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.10.1",
+    "blanket": "^1.2.3",
+    "body-parser": "^1.15.2",
+    "bower": "^1.8.0",
     "chai": "^3.5.0",
     "cookie-parser": "^1.4.3",
-    "express": "^4.10.7",
+    "express": "^4.14.0",
+    "istanbul": "^0.4.5",
     "mongodb": "^2.2.11",
     "multer": "^0.1.6",
     "synch-steps": "^1.1.0"
@@ -16,7 +19,7 @@
     "start": "node backend/index.js",
     "resetdb": "node backend/ResetDatabase.js",
     "pretest": "node backend/ResetDatabase.js",
-    "test": "mocha tests/backend.js"
+    "test": "istanbul cover _mocha tests/backend.js"
   },
   "repository": {
     "type": "git",

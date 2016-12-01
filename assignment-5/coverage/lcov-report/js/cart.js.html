@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/cart.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">js/</a> cart.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.27% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/133</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.27% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>11/133</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * ENTRY POINTS:
+ *
+ * This file has 2 entry points:
+ *		- initGlobalVars
+ *			This one runs when this script is loaded. That is, we don't wait for
+ *			the DOM to load in order to execute this function. It doesn't do much.
+ *			Just initializes some global variables to some constant values.
+ *			The reason why we execute this function before the DOM is ready is
+ *			to make sure that the test scripts can see that the global variables
+ *			exist, and so they don't crash when they are run.
+ *
+ *		- initPage
+ *			This one runs after the DOM is done loading. It does most of the work
+ *			of app initialization. It downloads the products from the Heroku app
+ *			using AJAX. Then it constructs the product divs from that data and
+ *			places these divs in the DOM, making them visible to the user.
+ *			It also sets up the inactive time tracker, and the cart button click
+ *			event listener.
+ */
+&nbsp;
+/**
+ * Sets up and initializes the global variables used in this app.
+ */
+<span class="fstat-no" title="function not covered" >function initGlobalVars() {</span>
+<span class="cstat-no" title="statement not covered" >	window.cart = {};</span>
+	// This var gets initialized later on during initPage using AJAX
+<span class="cstat-no" title="statement not covered" >	window.products = {};</span>
+<span class="cstat-no" title="statement not covered" >	window.inactiveTime = 0;</span>
+<span class="cstat-no" title="statement not covered" >	window.cartTotal = 0;</span>
+<span class="cstat-no" title="statement not covered" >	window.cartModal = null;</span>
+<span class="cstat-no" title="statement not covered" >	window.domain = 'http://localhost:3000';</span>
+}
+&nbsp;
+/**
+ * Gets the products hashmap which is a map of &lt;ProductName&gt; to
+ * &lt;ProductPrice&gt; and &lt;ProductQuantity&gt;
+ * It fulfills this by making an AJAX call to the /products endpoint
+ * The map is passed to the callback function when it is ready.
+ */
+<span class="fstat-no" title="function not covered" >function initProductsVar(callback) {</span>
+<span class="cstat-no" title="statement not covered" >	var productListXhr = new XMLHttpRequest();</span>
+<span class="cstat-no" title="statement not covered" >	productListXhr.open("GET", window.domain + "/products");</span>
+<span class="cstat-no" title="statement not covered" >	productListXhr.timeout = 2000; </span>//2000 ms
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	productListXhr.onload = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		if(productListXhr.status == 200) {</span>
+<span class="cstat-no" title="statement not covered" >			console.log("Request successful, status 200.");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			if (productListXhr.getResponseHeader('Content-Type').includes('application/json')) {</span>
+<span class="cstat-no" title="statement not covered" >				var products = JSON.parse(productListXhr.responseText);</span>
+<span class="cstat-no" title="statement not covered" >				return callback(products);</span>
+			}
+		} else {
+<span class="cstat-no" title="statement not covered" >			console.log("Received error code. Status " + productListXhr.status + ". Trying new AJAX call");</span>
+<span class="cstat-no" title="statement not covered" >			return initProductsVar(callback);</span>
+		}
+	};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	productListXhr.ontimeout = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		console.log("Request timeout occurred. Trying new AJAX call.");</span>
+<span class="cstat-no" title="statement not covered" >		return initProductsVar(callback);</span>
+	};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	productListXhr.onerror = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		console.log("Error occurred on request: " + productListXhr.status + " Trying new AJAX call.");</span>
+<span class="cstat-no" title="statement not covered" >		return initProductsVar(callback);</span>
+	};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	productListXhr.send();</span>
+}
+&nbsp;
+/**
+ * Enhances the DOM and initializes the inactive timer.
+ */
+<span class="fstat-no" title="function not covered" >function initPage() {</span>
+<span class="cstat-no" title="statement not covered" >	console.log('Initializing page...');</span>
+&nbsp;
+	// Initialization functions:
+<span class="cstat-no" title="statement not covered" >	setInterval(inactiveTimeTracking, 1000);</span>
+<span class="cstat-no" title="statement not covered" >	initProductsVar(<span class="fstat-no" title="function not covered" >function(products) {</span></span>
+<span class="cstat-no" title="statement not covered" >		window.products = products;</span>
+<span class="cstat-no" title="statement not covered" >		initProducts();</span>
+	});
+&nbsp;
+	// Cart button click handler:
+<span class="cstat-no" title="statement not covered" >	window.cartModal = new Modal(700);</span>
+<span class="cstat-no" title="statement not covered" >	$('#cartButton').click(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		window.cartModal.show();</span>
+<span class="cstat-no" title="statement not covered" >		inactiveTime = 0;</span>
+<span class="cstat-no" title="statement not covered" >		displayInactiveTime(inactiveTime);</span>
+	});
+}
+&nbsp;
+/**
+ * Initializes all the .product divs.
+ * Adds the cart image, price, title, and add and remove buttons to
+ * all product divs.
+ */
+<span class="fstat-no" title="function not covered" >function initProducts() {</span>
+<span class="cstat-no" title="statement not covered" >	var productListDiv = $('#productList');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	for (var productName in products) {</span>
+		// This is a div with the class 'product':
+<span class="cstat-no" title="statement not covered" >		var productDiv = $('&lt;div&gt;');</span>
+<span class="cstat-no" title="statement not covered" >		productDiv.addClass('product');</span>
+&nbsp;
+		// This is the path of the image, ex:
+		// "images/Box1_$10.png"
+<span class="cstat-no" title="statement not covered" >		var imagePath = products[productName].url;</span>
+&nbsp;
+		// This is the price of the product with the dollar sign, ex:
+		// "$10"
+<span class="cstat-no" title="statement not covered" >		var productPrice = '$' + products[productName].price;</span>
+&nbsp;
+		// Add IDs to the product divs for easy retrieval later on:
+<span class="cstat-no" title="statement not covered" >		productDiv.attr('id', 'product_' + productName);</span>
+&nbsp;
+		// Preparing divs to be inserted into the product div:
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var productImage = $('&lt;img&gt;');</span>
+<span class="cstat-no" title="statement not covered" >		productImage.attr('src', imagePath);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var cartDiv = $('&lt;div&gt;');</span>
+<span class="cstat-no" title="statement not covered" >		cartDiv.addClass('cart');</span>
+<span class="cstat-no" title="statement not covered" >		var cartImage = $('&lt;img&gt;');</span>
+<span class="cstat-no" title="statement not covered" >		cartImage.addClass('cartimg');</span>
+<span class="cstat-no" title="statement not covered" >		cartImage.attr('src', 'images/cart.png');</span>
+<span class="cstat-no" title="statement not covered" >		cartDiv.append(cartImage);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var priceDiv = $('&lt;div&gt;');</span>
+<span class="cstat-no" title="statement not covered" >		priceDiv.addClass('price')</span>
+<span class="cstat-no" title="statement not covered" >		priceDiv.text(productPrice);</span>
+&nbsp;
+		// Anonymous function is used here to store productName in its closure:
+<span class="cstat-no" title="statement not covered" >		var addButton;</span>
+<span class="cstat-no" title="statement not covered" >		(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >			var _productName = productName;</span>
+<span class="cstat-no" title="statement not covered" >			addButton = $('&lt;button&gt;');</span>
+<span class="cstat-no" title="statement not covered" >			addButton.addClass('add');</span>
+<span class="cstat-no" title="statement not covered" >			addButton.text('Add');</span>
+<span class="cstat-no" title="statement not covered" >			addButton.click(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >				addToCart(_productName);</span>
+			});
+		})();
+&nbsp;
+		// Anonymous function is used here to store productName in its closure:
+<span class="cstat-no" title="statement not covered" >		var removeButton;</span>
+<span class="cstat-no" title="statement not covered" >		(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >			var _productName = productName;</span>
+<span class="cstat-no" title="statement not covered" >			removeButton = $('&lt;button&gt;');</span>
+<span class="cstat-no" title="statement not covered" >			removeButton.addClass('remove');</span>
+<span class="cstat-no" title="statement not covered" >			removeButton.text('Remove');</span>
+<span class="cstat-no" title="statement not covered" >			removeButton.click(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >				removeFromCart(_productName);</span>
+			});
+		})();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		var titleHeading = $('&lt;h5&gt;');</span>
+<span class="cstat-no" title="statement not covered" >		titleHeading.text(productName);</span>
+&nbsp;
+		// Insert all the divs and buttons created above to the product div:
+<span class="cstat-no" title="statement not covered" >		productDiv.append(productImage);</span>
+<span class="cstat-no" title="statement not covered" >		productDiv.append(cartDiv);</span>
+<span class="cstat-no" title="statement not covered" >		productDiv.append(priceDiv);</span>
+<span class="cstat-no" title="statement not covered" >		productDiv.append(addButton);</span>
+<span class="cstat-no" title="statement not covered" >		productDiv.append(removeButton);</span>
+<span class="cstat-no" title="statement not covered" >		productDiv.append(titleHeading);</span>
+&nbsp;
+		// Insert this product div into the productList div:
+<span class="cstat-no" title="statement not covered" >		productListDiv.append(productDiv);</span>
+	}
+}
+&nbsp;
+/**
+ * Updates the product price labels on the images in the home page.
+ */
+<span class="fstat-no" title="function not covered" >function updateProductPriceLabels() {</span>
+<span class="cstat-no" title="statement not covered" >	$('.product').each(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		var productName = $(this).attr('id').split('_')[1];</span>
+<span class="cstat-no" title="statement not covered" >		var priceDiv = $(this).find('.price');</span>
+<span class="cstat-no" title="statement not covered" >		priceDiv.text('$' + products[productName].price);</span>
+	});
+}
+&nbsp;
+/**
+ * This function is called every second. It is used to keep track of how
+ * long the user was inactive for.
+ */
+<span class="fstat-no" title="function not covered" >function inactiveTimeTracking() {</span>
+<span class="cstat-no" title="statement not covered" >	if(window.cartModal.isVisible()) {</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	inactiveTime += 1;</span>
+<span class="cstat-no" title="statement not covered" >	displayInactiveTime(inactiveTime);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if(inactiveTime &gt; 300) {</span>
+<span class="cstat-no" title="statement not covered" >		console.log("Hey there! Are you still planning to buy something?");</span>
+<span class="cstat-no" title="statement not covered" >		inactiveTime = 0;</span>
+	}
+&nbsp;
+}
+&nbsp;
+/**
+ * Updates the inactive timer in the footer.
+ */
+<span class="fstat-no" title="function not covered" >function displayInactiveTime(time) {</span>
+<span class="cstat-no" title="statement not covered" >	var inactiveTimeSpan = $('#inactive_time_span');</span>
+<span class="cstat-no" title="statement not covered" >	inactiveTimeSpan.text(time);</span>
+}
+&nbsp;
+/**
+ * Adds the given product to the cart.
+ * If we run out of this product, then that product is not added to the cart.
+ * Returns true if the op is successful, false otherwise.
+ */
+<span class="fstat-no" title="function not covered" >function addToCart(productName, showAlert) {</span>
+<span class="cstat-no" title="statement not covered" >	showAlert = (showAlert == undefined) ? true : showAlert;</span>
+<span class="cstat-no" title="statement not covered" >	inactiveTime = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var itemQuantity = products[productName].quantity;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if(itemQuantity === 0) {</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	products[productName].quantity = itemQuantity - 1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var inCartQuantity = cart[productName];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if(inCartQuantity === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >		cart[productName] = 1;</span>
+<span class="cstat-no" title="statement not covered" >		showRemoveButton(true, productName);</span>
+	} else {
+<span class="cstat-no" title="statement not covered" >		cart[productName] = inCartQuantity + 1;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	cartTotal += products[productName].price;</span>
+<span class="cstat-no" title="statement not covered" >	updateCartTotal(cartTotal);</span>
+<span class="cstat-no" title="statement not covered" >	return true;</span>
+}
+&nbsp;
+/**
+ * Removes the given product from the cart if the user has
+ * the item in his/her cart.
+ * Returns true if the op is successful, false otherwise.
+ */
+<span class="fstat-no" title="function not covered" >function removeFromCart(productName) {</span>
+<span class="cstat-no" title="statement not covered" >	inactiveTime = 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var inCartQuantity = cart[productName];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if(inCartQuantity === undefined) {</span>
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+	} else {
+<span class="cstat-no" title="statement not covered" >		if(inCartQuantity === 1) {</span>
+<span class="cstat-no" title="statement not covered" >			delete cart[productName];</span>
+<span class="cstat-no" title="statement not covered" >			showRemoveButton(false, productName);</span>
+		} else {
+<span class="cstat-no" title="statement not covered" >			cart[productName] = inCartQuantity - 1;</span>
+		}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		products[productName].quantity += 1;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		cartTotal -= products[productName].price;</span>
+<span class="cstat-no" title="statement not covered" >		updateCartTotal(cartTotal);</span>
+<span class="cstat-no" title="statement not covered" >		return true;</span>
+	}
+}
+&nbsp;
+/**
+ * Updates the total amount in the cart button.
+ */
+<span class="fstat-no" title="function not covered" >function updateCartTotal(cartTotal) {</span>
+<span class="cstat-no" title="statement not covered" >	var cartButton = $('#cartButton');</span>
+<span class="cstat-no" title="statement not covered" >	cartButton.text('Cart($' + cartTotal + ')');</span>
+}
+&nbsp;
+/**
+ * This function enables remove button visibility when hover over a given product, if
+ * the product is currently in the shopper's cart.
+ */
+<span class="fstat-no" title="function not covered" >function showRemoveButton(show, productName) {</span>
+<span class="cstat-no" title="statement not covered" >	var removeButton = $('#product_' + productName + ' button.remove');</span>
+<span class="cstat-no" title="statement not covered" >	if (show) {</span>
+<span class="cstat-no" title="statement not covered" >		removeButton.css('display', 'block');</span>
+	} else {
+<span class="cstat-no" title="statement not covered" >		removeButton.css('display', 'none');</span>
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 30 2016 00:44:44 GMT-0800 (PST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 // Sets up the test environment:
 before(function(done) {
 	// Wait for the DOM to load:
@@ -5,6 +6,8 @@ before(function(done) {
 		done();
 	});
 });
+
+
 
 describe('addToCart', function() {
 	it('Should add PC1 to cart', function(done) {
@@ -71,3 +74,38 @@ describe('removeFromCart', function() {
 		done();
 	});
 });
+
+
+
+describe('initGlobalVars', function() {
+
+	it('Should set up global var', function(done) {
+		initGlobalVars();
+  		$(initPage);
+
+		expect(cart).to.exist;
+		expect(products).to.exist;
+		expect(inactiveTime).to.equal(0);
+		expect(cartTotal).to.equal(0);
+		expect(cartModal).to.equal(null);
+		expect(domain).to.equal('http://localhost:3000');
+
+		done();
+	});
+
+});
+
+describe('initPage', function() {
+
+
+	it('products and cartModal should exist', function(done) {
+		initPage();
+
+		expect(inactiveTime).to.equal(0);
+		expect(products).to.exist;
+		expect(cartModal).to.exist;
+		done();
+	});
+
+});
+

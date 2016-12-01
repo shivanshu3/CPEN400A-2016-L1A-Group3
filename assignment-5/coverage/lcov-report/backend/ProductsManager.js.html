@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for backend/ProductsManager.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">backend/</a> ProductsManager.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.97% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>31/66</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">41.67% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.15% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.97% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>31/66</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * This class handles everything to do with products such as:
+ * - Retrieving all of them from the database
+ * - Decrement the quantity of a given product
+ */
+&nbsp;
+// Required modules:
+var SynchSteps = require('synch-steps');
+&nbsp;
+/**
+ * The constructor
+ */
+var ProductsManager = function(dbDriver) {
+	// Instance variables:
+	this.dbDriver = dbDriver;
+};
+&nbsp;
+/**
+ * Returns a list of all products
+ * If minPrice and maxPrice are not undefined, then they will be
+ * used as price filters. These are inclusive.
+ * Calls the given callback when its ready
+ * First argument is err if any, the second argument is the list of products.
+ */
+ProductsManager.prototype.getAllProducts = function(minPrice, maxPrice, callback) {
+	var filter = {};
+	if ((minPrice != undefined) || (maxPrice != undefined)) {
+		filter.price = {};
+	}
+	if (minPrice != undefined) {
+		minPrice = Number(minPrice);
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(minPrice)) {
+<span class="cstat-no" title="statement not covered" >			callback(new Error('Illegal Input minPrice'), null);</span>
+<span class="cstat-no" title="statement not covered" >			return;</span>
+		}
+		filter.price.$gte = minPrice;
+	}
+	if (maxPrice != undefined) {
+		maxPrice = Number(maxPrice);
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(maxPrice)) {
+<span class="cstat-no" title="statement not covered" >			callback(new Error('Illegal Input maxPrice'), null);</span>
+<span class="cstat-no" title="statement not covered" >			return;</span>
+		}
+		filter.price.$lte = maxPrice;
+	}
+	var productsCollection = this.dbDriver.getCollection('Products');
+	productsCollection.find(filter).toArray(function(err, products) {
+		callback(err, products);
+	});
+};
+&nbsp;
+/**
+ * It converts the given list of products to a single object like this:
+ * {
+ *		"KeyboardCombo": {
+ *			"price": 28,
+ *			"quantity": 2,
+ *			"url": "foo"
+ *		},
+ *		...
+ * }
+ */
+ProductsManager.listToObject = function(products) {
+	var productsObject = {};
+&nbsp;
+	for (var i = 0; i &lt; products.length; i++) {
+		var product = products[i];
+		var singleProductObject = {
+			price: product.price,
+			quantity: product.quantity,
+			url: product.url
+		};
+		productsObject[product.name] = singleProductObject;
+	}
+&nbsp;
+	return productsObject;
+};
+&nbsp;
+/**
+ * It decrements the quantity field of the product with the given product name.
+ * Callback is called when the operation is complete.
+ */
+ProductsManager.prototype.decrementProductQuantity = function(productName, productQuantity, callback) {
+	var productsCollection = this.dbDriver.getCollection('Products');
+	productsCollection.update({
+		name: productName
+	}, {
+		$inc: {
+			quantity: -productQuantity
+		}
+	}, function(err, result) {
+		callback(err, result);
+	});
+};
+&nbsp;
+/**
+ * Adds the given order to the Orders collection.
+ * Also updates the corresponding product documents.
+ *
+ * Format of an order:
+ * {
+ *		"cart": {
+ *			'productName1': 2,
+ *			'productName2': 1,
+ *			...
+ *		},
+ *		"total": 117
+ * }
+ */
+ProductsManager.prototype.addOrder = <span class="fstat-no" title="function not covered" >function(order, callback) {</span>
+	// Empty order handling:
+<span class="cstat-no" title="statement not covered" >	if ((order == undefined) || (order.cart == undefined) || (order.cart == null)</span>
+		|| (order.cart == {})) {
+<span class="cstat-no" title="statement not covered" >		callback(null, {});</span>
+<span class="cstat-no" title="statement not covered" >		return;</span>
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var steps = new SynchSteps();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var error = null;</span>
+<span class="cstat-no" title="statement not covered" >	var _this = this;</span>
+&nbsp;
+	// Add to Orders collection:
+<span class="cstat-no" title="statement not covered" >	steps.step(<span class="fstat-no" title="function not covered" >function(next, stop) {</span></span>
+<span class="cstat-no" title="statement not covered" >		var ordersCollection = _this.dbDriver.getCollection('Orders');</span>
+<span class="cstat-no" title="statement not covered" >		ordersCollection.insert(order, <span class="fstat-no" title="function not covered" >function(err, result) {</span></span>
+<span class="cstat-no" title="statement not covered" >			if (err) {</span>
+<span class="cstat-no" title="statement not covered" >				error = err;</span>
+<span class="cstat-no" title="statement not covered" >				stop();</span>
+<span class="cstat-no" title="statement not covered" >				return;</span>
+			}
+<span class="cstat-no" title="statement not covered" >			next();</span>
+		});
+	});
+&nbsp;
+	// Decrement items from corresponding products:
+<span class="cstat-no" title="statement not covered" >	steps.step(<span class="fstat-no" title="function not covered" >function(next, stop) {</span></span>
+<span class="cstat-no" title="statement not covered" >		var decrementProductQuantity = <span class="fstat-no" title="function not covered" >function(index) {</span></span>
+<span class="cstat-no" title="statement not covered" >			var productNames = Object.keys(order.cart);</span>
+<span class="cstat-no" title="statement not covered" >			if (index == productNames.length) {</span>
+<span class="cstat-no" title="statement not covered" >				next();</span>
+<span class="cstat-no" title="statement not covered" >				return;</span>
+			}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			var productName = productNames[index];</span>
+<span class="cstat-no" title="statement not covered" >			var productQuantity = order.cart[productName];</span>
+<span class="cstat-no" title="statement not covered" >			_this.decrementProductQuantity(productName, productQuantity, <span class="fstat-no" title="function not covered" >function(err) {</span></span>
+<span class="cstat-no" title="statement not covered" >				if (err) {</span>
+<span class="cstat-no" title="statement not covered" >					stop();</span>
+<span class="cstat-no" title="statement not covered" >					error = err;</span>
+<span class="cstat-no" title="statement not covered" >					return;</span>
+				}
+<span class="cstat-no" title="statement not covered" >				decrementProductQuantity(index + 1);</span>
+			});
+		};
+<span class="cstat-no" title="statement not covered" >		decrementProductQuantity(0);</span>
+	});
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	steps.execute(<span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >		callback(error, {});</span>
+	});
+};
+&nbsp;
+module.exports = ProductsManager;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 30 2016 09:16:33 GMT-0800 (PST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
