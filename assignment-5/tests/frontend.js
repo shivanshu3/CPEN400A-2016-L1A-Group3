@@ -10,18 +10,28 @@ before(function(done) {
 
 
 describe('addToCart', function() {
+	// Initially PC1 should not be in cart, but after adding it to the cart
+	// it should be in it.
 	it('Should add PC1 to cart', function(done) {
 		expect(cart.PC1).to.be(undefined);
 		addToCart('PC1');
 		expect(cart.PC1).to.be(1);
 		done();
 	});
+
+	// Initially Tent should not be in cart, but after adding it to the cart
+	// it should be in it.
 	it('Should add Tent to cart', function(done) {
 		expect(cart.Tent).to.be(undefined);
 		addToCart('Tent');
 		expect(cart.Tent).to.be(1);
 		done();
 	});
+
+	// If the user tries to add more items to their cart than currently in
+	// stock, it should not allow them to do so. The number of items in their
+	// cart should stay at whatever number it was when the product went out
+	// of stock.
 	it('Should not add more items to the cart than in stock', function(done) {
 		var stock = products.Mice.quantity;
 		expect(stock).to.be.greaterThan(0);
@@ -44,18 +54,25 @@ describe('addToCart', function() {
 });
 
 describe('removeFromCart', function() {
+	// PC1 should initially be in cart, but after removing it from cart, it should
+	// not be in it anymore.
 	it('Should remove PC1 from cart', function(done) {
 		expect(cart.PC1).to.be(1);
 		removeFromCart('PC1');
 		expect(cart.PC1).to.be(undefined);
 		done();
 	});
+
+	// Tent should initially be in cart, but after removing it from cart, it should
+	// not be in it anymore.
 	it('Should remove Tent from cart', function(done) {
 		expect(cart.Tent).to.be(1);
 		removeFromCart('Tent');
 		expect(cart.Tent).to.be(undefined);
 		done();
 	});
+
+	// If an item is not in cart, it should not be removed
 	it('Should not remove an item if it is not in cart', function(done) {
 		var miceStock = products.Mice.quantity;
 		var numMiceInCart = cart.Mice;
@@ -79,6 +96,7 @@ describe('removeFromCart', function() {
 
 describe('initGlobalVars', function() {
 
+	// All the global variables should be present and properly initialized.
 	it('Should set up global var', function(done) {
 		initGlobalVars();
   		$(initPage);
@@ -97,7 +115,7 @@ describe('initGlobalVars', function() {
 
 describe('initPage', function() {
 
-
+	// Products and cartModal variables should exist after calling initPage()
 	it('products and cartModal should exist', function(done) {
 		initPage();
 

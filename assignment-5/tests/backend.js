@@ -31,6 +31,7 @@ before(function(done) {
 });
 
 describe('getAllProducts', function() {
+	// When no price filters are given, all products should be returned
 	it('Without price filter should return all products', function(done) {
 		productsManager.getAllProducts(undefined, undefined, function(err, products) {
 			expect(err).to.equal(null);
@@ -45,6 +46,8 @@ describe('getAllProducts', function() {
 			done();
 		});
 	});
+
+	// Only products greater than the given min price filter should be returned.
 	it('With only min price filter', function(done) {
 		var minPrice = 40;
 		productsManager.getAllProducts(minPrice, undefined, function(err, products) {
@@ -58,6 +61,8 @@ describe('getAllProducts', function() {
 			done();
 		});
 	});
+
+	// Only products lesser than the given max price filter should be returned.
 	it('With only max price filter', function(done) {
 		var maxPrice = 354;
 		productsManager.getAllProducts(undefined, maxPrice, function(err, products) {
@@ -71,6 +76,9 @@ describe('getAllProducts', function() {
 			done();
 		});
 	});
+
+	// Only products greater than the given min price filter and lesser than
+	// the given max price filter should be returned.
 	it('With min and max price filters', function(done) {
 		var minPrice = 40;
 		var maxPrice = 354;
